@@ -12,12 +12,12 @@ const AuthForm = (props) => {
         </Label>
         <Input type="name" name="name" id="exampleName" placeholder="john" />
       </FormGroup>
-      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+      {/* <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
         <Label for="name" className="mr-sm-2">
           Surname
         </Label>
         <Input type="name" name="name" id="exampleSurname" placeholder="doe" />
-      </FormGroup>
+      </FormGroup> */}
       <Button color="danger" className="px-5 mt-5">
         Login
       </Button>
