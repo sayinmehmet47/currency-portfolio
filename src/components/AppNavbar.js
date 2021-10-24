@@ -37,13 +37,19 @@ export const AppNavbar = () => {
           isOpen={!collapsed}
           navbar
         >
-          <Nav className="" navbar>
+          <Nav navbar>
             <NavItem className="d-flex align-items-center justify-content-center">
               <CgProfile color="white" />
               <NavLink href="#">{`welcome ${userName}`}</NavLink>{' '}
             </NavItem>{' '}
             <NavItem>
-              <NavLink onClick={handleLogout}>Logout</NavLink>{' '}
+              <NavLink
+                style={{ background: 'red', cursor: 'pointer' }}
+                className="d-flex align-items-center justify-content-center ms-4"
+                onClick={handleLogout}
+              >
+                Logout
+              </NavLink>{' '}
             </NavItem>{' '}
           </Nav>
         </Collapse>
