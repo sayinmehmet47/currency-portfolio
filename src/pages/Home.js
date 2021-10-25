@@ -6,12 +6,16 @@ import { AppNavbar } from "../../src/components/AppNavbar";
 import { PurchaseModal } from "../components/PurchaseModal";
 import ReactSearchBox from "react-search-box";
 import { PortfolioTable } from "../components/PortfolioTable";
-import { getPortfolio } from "../store/Actions/portfolioActions";
+import {
+  getPortfolio,
+  getTotalAssets,
+} from "../store/Actions/portfolioActions";
 
 export default function Home() {
   const history = useHistory();
   const isLogin = useSelector((state) => state.auth.isLogin);
   const userName = useSelector((state) => state.auth.user.name);
+  const portfolio = useSelector((state) => state.portfolioData);
   const [selectedCurrency, setSelectedCurrency] = useState("");
 
   const data = useSelector((state) =>
@@ -28,8 +32,10 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getCurrencies());
+
     if (isLogin) {
       dispatch(getPortfolio(userName));
+      dispatch(getTotalAssets(userName));
     }
   }, []);
 
