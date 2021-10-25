@@ -1,7 +1,12 @@
-import { CURRENCY_LOADED, CURRENCY_LOADING } from '../Actions/actions';
+import {
+  CURRENCY_LOADED,
+  CURRENCY_LOADING,
+  CURRENCY_RATE,
+} from "../Actions/actions";
 
 const initialState = {
   data: [],
+  rates: [],
   loading: false,
 };
 
@@ -17,6 +22,12 @@ export const currencyReducer = (state = initialState, action) => {
         ...state,
         data: action.payload,
         loading: false,
+      };
+
+    case CURRENCY_RATE:
+      return {
+        ...state,
+        rates: action.payload,
       };
     default:
       return state;

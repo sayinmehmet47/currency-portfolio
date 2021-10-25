@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
-import { register } from '../store/Actions/AuthAcrtions';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import { register } from "../store/Actions/AuthAcrtions";
 
 export default function Register() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
   const handleChangeName = (e) => setName(e.target.value);
   const handleChangeSurname = (e) => setSurname(e.target.value);
 
@@ -19,13 +19,15 @@ export default function Register() {
     const user = {
       name,
       surname,
-      balance: 1000,
+      portfolio: [
+        { acronym: "USD", name: "United States Dollar", totalAsset: 1000 },
+      ],
     };
 
     // Attempt to login
     dispatch(register(user));
     localStorage.setItem(user.name, JSON.stringify(user));
-    history.push('/');
+    history.push("/");
   };
 
   return (

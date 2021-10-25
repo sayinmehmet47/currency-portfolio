@@ -2,13 +2,12 @@ import {
   LOGIN_SUCCESS,
   USER_LOGOUT,
   USER_REGISTERED,
-} from '../Actions/actions';
+} from "../Actions/actions";
 
 const initialState = {
   isRegistered: false,
   isLogin: false,
-  user: { name: '', surname: '' },
-  balance: 1000,
+  user: { name: "", surname: "" },
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -23,10 +22,9 @@ export const authReducer = (state = initialState, action) => {
     case USER_LOGOUT:
       return {
         ...state,
-        isLogin: '',
-        isRegistered: '',
-        user: { name: '', surname: '' },
-        balance: '',
+        isLogin: "",
+        isRegistered: "",
+        user: { name: "", surname: "" },
       };
     case LOGIN_SUCCESS:
       return {
@@ -34,7 +32,6 @@ export const authReducer = (state = initialState, action) => {
         isLogin: true,
         isRegistered: true,
         user: { name: action.payload.name, surname: action.payload.surname },
-        balance: action.payload.balance,
       };
 
     default:

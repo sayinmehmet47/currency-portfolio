@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTERED } from './actions';
+import axios from "axios";
+import { LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTERED } from "./actions";
 
 export const register = (users) => (dispatch, getState) => {
   // User loading
@@ -26,6 +26,5 @@ export const logout = () => (dispatch) => {
 };
 
 export const login = (user) => (dispatch) => {
-  console.log(user);
   dispatch({ type: LOGIN_SUCCESS, payload: user });
 };
