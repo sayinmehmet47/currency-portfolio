@@ -7,6 +7,7 @@ import {
 const initialState = {
   data: [],
   rates: [],
+  date: "",
   loading: false,
 };
 
@@ -16,6 +17,7 @@ export const currencyReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        date: new Date(Date.now()).toUTCString(),
       };
     case CURRENCY_LOADED:
       return {
@@ -28,6 +30,7 @@ export const currencyReducer = (state = initialState, action) => {
       return {
         ...state,
         rates: action.payload,
+        date: new Date(Date.now()).toUTCString(),
       };
     default:
       return state;

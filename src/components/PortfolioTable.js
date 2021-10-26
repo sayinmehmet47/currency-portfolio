@@ -100,22 +100,6 @@ export const PortfolioTable = () => {
           })}
         </tbody>
       </table>
-      {/* <div className="mt-2 d-flex justify-content-center">
-        <button
-          className="btn btn-outline-dark btn-sm"
-          onClick={() => previousPage()}
-          disabled={!canPreviousPage}
-        >
-          ⬅ Previous
-        </button>
-        <button
-          className="btn btn-outline-dark btn-sm"
-          onClick={() => nextPage()}
-          disabled={!canNextPage}
-        >
-          NextPage ➡
-        </button>
-      </div> */}
     </div>
   );
 };

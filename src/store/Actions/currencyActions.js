@@ -21,6 +21,7 @@ export const getCurrencies = (users) => (dispatch, getState) => {
 };
 
 export const getCurrencyRate = (selected, acronym) => (dispatch, getState) => {
+  console.log(selected);
   axios
     .get(
       `https://v6.exchangerate-api.com/v6/61ae5c15d41f8f7ab2cdfdef/latest/${selected[0]}`

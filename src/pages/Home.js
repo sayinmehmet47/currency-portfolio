@@ -16,6 +16,7 @@ export default function Home() {
   const history = useHistory();
   const isLogin = useSelector((state) => state.auth.isLogin);
   const userName = useSelector((state) => state.auth.user.name);
+  const lastUpdated = useSelector((state) => state.codes.date);
   const portfolio = useSelector((state) => state.portfolioData);
   const totalAssets = useSelector((state) => state.totalAssets);
 
@@ -63,6 +64,9 @@ export default function Home() {
             <PurchaseModal selected={selectedCurrency} />
           </div>
           <PortfolioTable />
+
+          <span style={{ color: "red" }}>Last Updated: </span>
+          <span className="pb-5">{lastUpdated}</span>
         </div>
       ) : (
         history.push("/login")
