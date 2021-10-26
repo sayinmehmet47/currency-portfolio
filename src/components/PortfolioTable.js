@@ -32,7 +32,10 @@ export const PortfolioTable = () => {
               buttonLabel="Buy"
               selected={[row.original.acronym, row.original.name]}
             />
-            <SellingModal buttonLabel="Sell" />
+            <SellingModal
+              buttonLabel="Sell"
+              selected={[row.original.acronym, row.original.name]}
+            />
           </div>
         ),
       },

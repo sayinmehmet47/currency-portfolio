@@ -21,8 +21,6 @@ export const getTotalAssets = () => (dispatch, getState) => {
     )
     .then((res) => {
       const rates = res.data.conversion_rates;
-      console.log(rates);
-
       const total = portfolio
         .map((e) => e.totalAsset / rates[e.acronym])
         .reduce((a, b) => {

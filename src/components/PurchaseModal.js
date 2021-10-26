@@ -45,7 +45,6 @@ export const PurchaseModal = (props) => {
   };
 
   const updatePortfolio = () => {
-    console.log(portfolio);
     const copy = JSON.stringify(portfolio);
     const copyPortfolio = JSON.parse(copy);
 
@@ -63,7 +62,6 @@ export const PurchaseModal = (props) => {
     const indexSelected = copyPortfolio.findIndex(
       (e) => e.acronym === selected[0]
     );
-    console.log(indexSelected);
     if (copyPortfolio[indexMain].totalAsset > JSON.parse(amount)) {
       copyPortfolio[indexMain].totalAsset =
         copyPortfolio[indexMain].totalAsset - JSON.parse(amount * rate);
@@ -94,7 +92,6 @@ export const PurchaseModal = (props) => {
       })
     );
     dispatch(getPortfolio(user));
-    console.log(copyPortfolio);
   };
 
   const handleSubmit = (e) => {
