@@ -6,6 +6,7 @@ import { AppNavbar } from "../../src/components/AppNavbar";
 import { PurchaseModal } from "../components/PurchaseModal";
 import ReactSearchBox from "react-search-box";
 import { PortfolioTable } from "../components/PortfolioTable";
+import { MdMonetizationOn } from "react-icons/md";
 import {
   getPortfolio,
   getTotalAssets,
@@ -16,6 +17,8 @@ export default function Home() {
   const isLogin = useSelector((state) => state.auth.isLogin);
   const userName = useSelector((state) => state.auth.user.name);
   const portfolio = useSelector((state) => state.portfolioData);
+  const totalAssets = useSelector((state) => state.totalAssets);
+
   const [selectedCurrency, setSelectedCurrency] = useState("");
 
   const data = useSelector((state) =>
@@ -44,8 +47,12 @@ export default function Home() {
       {isLogin ? (
         <div>
           <AppNavbar />
-          {/* <PurchaseModal ref={PurchaseModal} /> */}
-          <div className="w-50 mx-auto">
+          <div className="d-flex justify-content-center align-items-center">
+            <h2>TotalAssets:{totalAssets}</h2>
+            <MdMonetizationOn size={30} />
+          </div>
+
+          <div className="w-50 mx-auto mt-5">
             <ReactSearchBox
               placeholder="Search for currency"
               onSelect={handleSelection}

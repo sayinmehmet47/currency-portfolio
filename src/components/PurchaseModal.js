@@ -17,6 +17,8 @@ import { getPortfolio } from "../store/Actions/portfolioActions";
 
 export const PurchaseModal = (props) => {
   const { buttonLabel, className, selected } = props;
+
+  console.log(selected);
   const rate = useSelector((state) => state.codes.rates);
   const dispatch = useDispatch();
   const [clickedCurrency, setClickedCurrency] = useState("USD");

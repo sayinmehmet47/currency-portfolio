@@ -11,7 +11,7 @@ import {
 export const getCurrencies = (users) => (dispatch, getState) => {
   dispatch({ type: CURRENCY_LOADING });
   axios
-    .get("https://v6.exchangerate-api.com/v6/a6742841c237443f034010d5/codes")
+    .get("https://v6.exchangerate-api.com/v6/61ae5c15d41f8f7ab2cdfdef/codes")
     .then((res) =>
       dispatch({
         type: CURRENCY_LOADED,
@@ -23,7 +23,7 @@ export const getCurrencies = (users) => (dispatch, getState) => {
 export const getCurrencyRate = (selected, acronym) => (dispatch, getState) => {
   axios
     .get(
-      `https://v6.exchangerate-api.com/v6/a6742841c237443f034010d5/latest/${selected[0]}`
+      `https://v6.exchangerate-api.com/v6/61ae5c15d41f8f7ab2cdfdef/latest/${selected[0]}`
     )
     .then((res) =>
       dispatch({

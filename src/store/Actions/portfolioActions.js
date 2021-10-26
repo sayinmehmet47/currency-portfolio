@@ -17,7 +17,7 @@ export const getTotalAssets = () => (dispatch, getState) => {
 
   axios
     .get(
-      "https://v6.exchangerate-api.com/v6/a6742841c237443f034010d5/latest/USD"
+      "https://v6.exchangerate-api.com/v6/61ae5c15d41f8f7ab2cdfdef/latest/USD"
     )
     .then((res) => {
       const rates = res.data.conversion_rates;
@@ -30,5 +30,8 @@ export const getTotalAssets = () => (dispatch, getState) => {
         }, 0);
 
       dispatch({ type: GET_TOTAL, payload: Math.round(total) });
+      const local = JSON.parse(localStorage.getItem(user));
+      local.totalAsset = Math.round(total);
+      localStorage.setItem(user, JSON.stringify(local));
     });
 };

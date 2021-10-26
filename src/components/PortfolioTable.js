@@ -1,10 +1,18 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { useTable, useSortBy, usePagination } from "react-table";
+import { PurchaseModal } from "./PurchaseModal";
 
 export const PortfolioTable = () => {
   const portfolio = useSelector((state) => state.portfolioData);
   const data = useMemo(() => [...portfolio], [portfolio]);
+  const [open, setOpen] = useState(false);
+
+  const handleBuy = () => {
+    setOpen(true);
+    alert("buy");
+  };
+
   const columns = useMemo(
     () => [
       {
@@ -24,7 +32,11 @@ export const PortfolioTable = () => {
         Header: "Trade",
         Cell: ({ cell }) => (
           <div>
-            <button className="btn btn-success m-1" value="fdf">
+            <button
+              className="btn btn-success m-1"
+              onClick={handleBuy}
+              value="fdf"
+            >
               BUY
             </button>
             <button className="btn btn-danger m-1" value="fdf">
