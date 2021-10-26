@@ -21,7 +21,7 @@ export const PortfolioTable = () => {
       },
       {
         Header: "Amount",
-        accessor: "totalAsset",
+        accessor: (d) => d.totalAsset.toFixed(3),
       },
       {
         width: 300,
