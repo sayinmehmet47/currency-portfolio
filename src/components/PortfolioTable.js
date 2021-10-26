@@ -1,17 +1,13 @@
 import React, { useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { useTable, useSortBy, usePagination } from "react-table";
+import { BuyingModal } from "./BuyingModal";
 import { PurchaseModal } from "./PurchaseModal";
+import { SellingModal } from "./SellingModal";
 
 export const PortfolioTable = () => {
   const portfolio = useSelector((state) => state.portfolioData);
   const data = useMemo(() => [...portfolio], [portfolio]);
-  const [open, setOpen] = useState(false);
-
-  const handleBuy = () => {
-    setOpen(true);
-    alert("buy");
-  };
 
   const columns = useMemo(
     () => [
@@ -30,18 +26,13 @@ export const PortfolioTable = () => {
       {
         width: 300,
         Header: "Trade",
-        Cell: ({ cell }) => (
-          <div>
-            <button
-              className="btn btn-success m-1"
-              onClick={handleBuy}
-              value="fdf"
-            >
-              BUY
-            </button>
-            <button className="btn btn-danger m-1" value="fdf">
-              SELL
-            </button>
+        Cell: ({ row }) => (
+          <div className="d-flex justify-content-center">
+            <BuyingModal
+              buttonLabel="Buy"
+              selected={[row.original.acronym, row.original.name]}
+            />
+            <SellingModal buttonLabel="Sell" />
           </div>
         ),
       },
