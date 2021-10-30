@@ -1,93 +1,60 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
   Form,
   FormGroup,
   Label,
   Input,
   Alert,
 } from "reactstrap";
-import { getCurrencyRate } from "../store/Actions/currencyActions";
-import { getPortfolio } from "../store/Actions/portfolioActions";
+import {
+  buyCurrency,
+  clearRate,
+  getCurrencyRate,
+  updateToCurrency,
+} from "../store/Actions/currencyActions";
 
 export const BuyingModal = (props) => {
   const dispatch = useDispatch();
-  const { buttonLabel, className, selected } = props;
-  const [clickedCurrency, setClickedCurrency] = useState("USD");
-  const [alertZero, setZeroAlert] = useState(false);
-  const [alertHigh, setAlertHigh] = useState(false);
-  const [modal, setModal] = useState(false);
-  const [amount, setAmount] = useState("");
-  const acronyms = useSelector((state) =>
+  const fromCurrency = useSelector((state) => state.codes.fromCurrency);
+  const toCurrency = useSelector((state) => state.codes.toCurrency);
+  const currentRate = useSelector((state) => state.codes.rates);
+  const holdedCurrencies = useSelector((state) =>
     state.portfolioData.map((e) => e.acronym)
   );
-  const portfolio = useSelector((state) => state.portfolioData);
-  const rate = useSelector((state) => state.codes.rates);
-  const user = useSelector((state) => state.auth.user.name);
+  const { buttonLabel, className } = props;
+  const [modal, setModal] = useState(false);
+  const [amount, setAmount] = useState("");
+  const [error, setError] = useState("");
 
-  const toggle = () => setModal(!modal);
-  const handleCurrency = (acronym) => {
-    setClickedCurrency(acronym);
-    dispatch(getCurrencyRate(selected, acronym));
+  const toggle = () => {
+    setModal(!modal);
+    if (!amount) {
+      setError("please enter an amount");
+      setModal(true);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
+    } else if (!currentRate) {
+      setError("please select a currency");
+      setModal(true);
+      setTimeout(() => {
+        setError("");
+      }, 2000);
+    } else {
+      if (amount && currentRate) {
+        dispatch(clearRate());
+      }
+    }
   };
 
-  useEffect(() => {
-    dispatch(getCurrencyRate(selected, "USD"));
-  }, []);
-
-  const updatePortfolio = () => {
-    const copy = JSON.stringify(portfolio);
-    const copyPortfolio = JSON.parse(copy);
-
-    if (JSON.parse(amount) === 0) {
-      setZeroAlert(true);
-      setTimeout(() => {
-        setZeroAlert(false);
-      }, 5000);
-      toggle();
-    }
-
-    const indexMain = copyPortfolio.findIndex(
-      (e) => e.acronym === clickedCurrency
-    );
-    const indexSelected = copyPortfolio.findIndex(
-      (e) => e.acronym === selected[0]
-    );
-    if (copyPortfolio[indexMain].totalAsset > JSON.parse(amount)) {
-      copyPortfolio[indexMain].totalAsset =
-        copyPortfolio[indexMain].totalAsset - JSON.parse(amount * rate);
-
-      if (indexSelected >= 0) {
-        copyPortfolio[indexSelected].totalAsset =
-          copyPortfolio[indexSelected].totalAsset + JSON.parse(amount);
-      } else if (JSON.parse(amount) !== 0) {
-        copyPortfolio.push({
-          acronym: selected[0],
-          name: selected[1],
-          totalAsset: JSON.parse(amount),
-        });
-      }
-    } else {
-      setAlertHigh(true);
-      setTimeout(() => {
-        setAlertHigh(false);
-      }, 5000);
-      toggle();
-    }
-    const localPortfolio = JSON.parse(localStorage.getItem(user));
-    localStorage.setItem(
-      user,
-      JSON.stringify({
-        ...localPortfolio,
-        portfolio: copyPortfolio,
-      })
-    );
-    dispatch(getPortfolio(user));
+  const closeModal = () => {
+    setModal(false);
+    dispatch(clearRate());
   };
 
   const handleChange = (e) => {
@@ -96,46 +63,49 @@ export const BuyingModal = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updatePortfolio();
+
+    if (amount && currentRate && currentRate !== 1) {
+      dispatch(buyCurrency(JSON.parse(amount)));
+    }
+  };
+
+  const handleUpdateToCurrency = (acronym) => {
+    dispatch(updateToCurrency(acronym));
+    dispatch(getCurrencyRate());
   };
 
   return (
-    <div>
+    <div className="mx-2">
       <Button color="success" onClick={toggle}>
         {buttonLabel}
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>
-          {alertZero ? (
-            <Alert color="danger">You entered an invalid amount</Alert>
-          ) : null}
-          {alertHigh ? (
-            <Alert color="warning">You entered high amount</Alert>
-          ) : null}
-          {acronyms.map((acronym, index) => {
-            return (
-              <Button
-                key={index}
-                className="m-1"
-                onClick={() => handleCurrency(acronym)}
-                color="success"
-              >
-                {acronym}
-              </Button>
-            );
-          })}
-          <div className="d-flex justify-content-between">
-            <h5>
-              {clickedCurrency} to {selected[0]}
-            </h5>
+        {error ? <Alert color="warning">{error}</Alert> : null}
+        <h3 className="text-center bg-success py-1 text-light">Buy</h3>
+
+        <ModalHeader toggle={closeModal}>
+          <div className="d-flex">
+            {holdedCurrencies.map((acronym, index) => {
+              return (
+                <Button
+                  key={index}
+                  className="me-1"
+                  onClick={() => handleUpdateToCurrency(acronym)}
+                  color="success"
+                >
+                  {acronym}
+                </Button>
+              );
+            })}
           </div>
         </ModalHeader>
         <ModalBody>
+          <h5>
+            {fromCurrency} to {toCurrency}
+          </h5>
           <div>
             <span>Rate:</span>
-            <span className="text-danger mx-3 fs-4">
-              {Number((1 / rate).toFixed(4))}
-            </span>
+            <span className="text-danger mx-3 fs-4">{currentRate}</span>
           </div>
           <Form onSubmit={handleSubmit}>
             <FormGroup className="d-flex align-items-center">

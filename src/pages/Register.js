@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import { register } from "../store/Actions/AuthAcrtions";
+import { register } from "../store/Actions/AuthActions";
 
 export default function Register() {
   const dispatch = useDispatch();

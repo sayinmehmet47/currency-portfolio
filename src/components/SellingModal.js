@@ -5,73 +5,68 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
   Form,
   FormGroup,
   Label,
   Input,
   Alert,
 } from "reactstrap";
-import { getCurrencyRate } from "../store/Actions/currencyActions";
-import { getPortfolio } from "../store/Actions/portfolioActions";
+import {
+  clearRate,
+  getCurrencyRate,
+  sellCurrency,
+  updateToCurrency,
+} from "../store/Actions/currencyActions";
 
 export const SellingModal = (props) => {
   const dispatch = useDispatch();
-  const { buttonLabel, className, selected } = props;
-  const [clickedCurrency, setClickedCurrency] = useState("USD");
-  const [alertZero, setZeroAlert] = useState(false);
-  const [alertHigh, setAlertHigh] = useState(false);
+  const fromCurrency = useSelector((state) => state.codes.fromCurrency);
+  const toCurrency = useSelector((state) => state.codes.toCurrency);
+  const currentRate = useSelector((state) => state.codes.rates);
+
+  const holdedCurrencies = useSelector((state) =>
+    state.portfolioData.map((e) => e.acronym)
+  );
+  const { buttonLabel, className } = props;
   const [modal, setModal] = useState(false);
   const [amount, setAmount] = useState("");
-  const acronyms = useSelector((state) =>
-    state.portfolioData.map((e) => e.acronym)
-  );
-  const name = useSelector((state) =>
-    state.portfolioData.map((e) => e.acronym)
-  );
-  const portfolio = useSelector((state) => state.portfolioData);
-  const rate = useSelector((state) => state.codes.rates);
-  const user = useSelector((state) => state.auth.user.name);
+  const [error, setError] = useState("");
 
-  const toggle = () => setModal(!modal);
-  const handleCurrency = (acronym) => {
-    setClickedCurrency(acronym);
-    dispatch(getCurrencyRate(selected, acronym));
-  };
-
-  const updatePortfolio = () => {
-    const copy = JSON.stringify(portfolio);
-    const copyPortfolio = JSON.parse(copy);
-
-    if (JSON.parse(amount) === 0) {
-      setZeroAlert(true);
+  const toggle = () => {
+    setModal(!modal);
+    if (!amount) {
+      setError("please enter an amount");
+      setModal(true);
       setTimeout(() => {
-        setZeroAlert(false);
+        setError("");
       }, 5000);
-      toggle();
+    } else if (!currentRate) {
+      setError("please select a currency");
+      setModal(true);
+      setTimeout(() => {
+        setError("");
+      }, 2000);
+    } else {
+      if (amount && currentRate) {
+        dispatch(clearRate());
+      }
     }
-    //////////////////////////////////////////
-    console.log(clickedCurrency);
-    console.log(selected);
-
-    const localPortfolio = JSON.parse(localStorage.getItem(user));
-    localStorage.setItem(
-      user,
-      JSON.stringify({
-        ...localPortfolio,
-        portfolio: copyPortfolio,
-      })
-    );
-    dispatch(getPortfolio(user));
   };
-  ////////////////////////////////
+
   const handleChange = (e) => {
     setAmount(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updatePortfolio();
+    if (amount && currentRate && currentRate !== 1) {
+      dispatch(sellCurrency(JSON.parse(amount)));
+    }
+  };
+
+  const handleUpdateToCurrency = (acronym) => {
+    dispatch(updateToCurrency(acronym));
+    dispatch(getCurrencyRate());
   };
 
   return (
@@ -80,35 +75,35 @@ export const SellingModal = (props) => {
         {buttonLabel}
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>
-          {alertZero ? (
-            <Alert color="danger">You entered an invalid amount</Alert>
-          ) : null}
-          {alertHigh ? (
-            <Alert color="warning">You entered high amount</Alert>
-          ) : null}
-          {acronyms.map((acronym, index) => {
+        {error ? <Alert color="warning">{error}</Alert> : null}
+
+        <h3 className="text-center bg-danger text-light py-2">Sell</h3>
+        <div className="d-flex">
+          {holdedCurrencies.map((acronym, index) => {
             return (
               <Button
                 key={index}
                 className="m-1"
-                onClick={() => handleCurrency(acronym)}
+                onClick={() => handleUpdateToCurrency(acronym)}
                 color="success"
               >
                 {acronym}
               </Button>
             );
           })}
+        </div>
+
+        <ModalHeader toggle={() => setModal(false)}>
           <div className="d-flex justify-content-between">
             <h5>
-              {selected[0]} to {clickedCurrency}
+              {fromCurrency} to {toCurrency}
             </h5>
           </div>
         </ModalHeader>
         <ModalBody>
           <div>
             <span>Rate:</span>
-            <span className="text-danger mx-3 fs-4">{rate}</span>
+            <span className="text-danger mx-3 fs-4">{currentRate}</span>
           </div>
           <Form onSubmit={handleSubmit}>
             <FormGroup className="d-flex align-items-center">

@@ -1,13 +1,19 @@
-import React, { useMemo, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useTable, useSortBy, usePagination } from "react-table";
+import { updateFromCurrency } from "../store/Actions/currencyActions";
 import { BuyingModal } from "./BuyingModal";
-import { PurchaseModal } from "./PurchaseModal";
 import { SellingModal } from "./SellingModal";
 
 export const PortfolioTable = () => {
   const portfolio = useSelector((state) => state.portfolioData);
+  const dispatch = useDispatch();
+  const [fromCurrency, setFromCurrency] = useState("");
   const data = useMemo(() => [...portfolio], [portfolio]);
+
+  useEffect(() => {
+    dispatch(updateFromCurrency(fromCurrency));
+  }, [fromCurrency]);
 
   const columns = useMemo(
     () => [
@@ -32,10 +38,7 @@ export const PortfolioTable = () => {
               buttonLabel="Buy"
               selected={[row.original.acronym, row.original.name]}
             />
-            <SellingModal
-              buttonLabel="Sell"
-              selected={[row.original.acronym, row.original.name]}
-            />
+            <SellingModal buttonLabel="Sell" />
           </div>
         ),
       },
@@ -47,12 +50,9 @@ export const PortfolioTable = () => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    nextPage,
-    previousPage,
+
     prepareRow,
     page,
-    canPreviousPage,
-    canNextPage,
   } = useTable({ columns, data }, useSortBy, usePagination);
   return (
     <div className="d-flex flex-column mb-5 mt-5 mx-5">
@@ -83,7 +83,10 @@ export const PortfolioTable = () => {
           {page.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr
+                {...row.getRowProps()}
+                onClick={() => setFromCurrency(row.original.acronym)}
+              >
                 {row.cells.map((cell) => {
                   return (
                     <td

@@ -12,3 +12,9 @@ export const store = configureStore({
     totalAssets: totalAssetsReducer,
   },
 });
+
+store.subscribe(() => {
+  const state = store.getState();
+  const serializedState = JSON.stringify(state);
+  localStorage.setItem("state", serializedState);
+});

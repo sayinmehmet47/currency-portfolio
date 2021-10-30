@@ -1,14 +1,22 @@
 import {
+  CLEAR_ERROR,
+  CLEAR_RATE,
   CURRENCY_LOADED,
   CURRENCY_LOADING,
   CURRENCY_RATE,
+  FROM_CURRENCY,
+  TO_CURRENCY,
+  UNSUFFICENT_BALANCE,
 } from "../Actions/actions";
 
 const initialState = {
   data: [],
-  rates: [],
+  rates: "",
+  fromCurrency: "USD",
+  toCurrency: "USD",
   date: "",
   loading: false,
+  error: "",
 };
 
 export const currencyReducer = (state = initialState, action) => {
@@ -31,6 +39,33 @@ export const currencyReducer = (state = initialState, action) => {
         ...state,
         rates: action.payload,
         date: new Date(Date.now()).toUTCString(),
+      };
+
+    case FROM_CURRENCY:
+      return {
+        ...state,
+        fromCurrency: action.payload,
+      };
+    case TO_CURRENCY:
+      return {
+        ...state,
+        toCurrency: action.payload,
+      };
+    case CLEAR_RATE:
+      return {
+        ...state,
+        rates: "",
+      };
+
+    case UNSUFFICENT_BALANCE:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case CLEAR_ERROR:
+      return {
+        ...state,
+        error: "",
       };
     default:
       return state;

@@ -1,8 +1,10 @@
 import { GET_TOTAL, PORTFOLIO_START, USER_LOGOUT } from "./actions";
 import axios from "axios";
 
-export const getPortfolio = (userName) => (dispatch, getState) => {
+export const getPortfolio = () => (dispatch, getState) => {
+  const userName = getState().auth.user.name;
   const { portfolio } = JSON.parse(localStorage.getItem(userName));
+
   dispatch({ type: PORTFOLIO_START, payload: portfolio });
 };
 
@@ -17,7 +19,7 @@ export const getTotalAssets = () => (dispatch, getState) => {
 
   axios
     .get(
-      "https://v6.exchangerate-api.com/v6/61ae5c15d41f8f7ab2cdfdef/latest/USD"
+      "https://v6.exchangerate-api.com/v6/0f7ced3b83c72378b5294477/latest/USD"
     )
     .then((res) => {
       const rates = res.data.conversion_rates;

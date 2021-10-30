@@ -1,25 +1,27 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { getCurrencies } from "../store/Actions/currencyActions";
 import { AppNavbar } from "../../src/components/AppNavbar";
 import { PurchaseModal } from "../components/PurchaseModal";
 import ReactSearchBox from "react-search-box";
 import { PortfolioTable } from "../components/PortfolioTable";
 import { MdMonetizationOn } from "react-icons/md";
+import { FcSearch } from "react-icons/fc";
 import {
   getPortfolio,
   getTotalAssets,
 } from "../store/Actions/portfolioActions";
+import { Alert } from "reactstrap";
+import { getCurrencies } from "../store/Actions/currencyActions";
 
 export default function Home() {
   const history = useHistory();
+  const dispatch = useDispatch();
   const isLogin = useSelector((state) => state.auth.isLogin);
   const userName = useSelector((state) => state.auth.user.name);
   const lastUpdated = useSelector((state) => state.codes.date);
-  const portfolio = useSelector((state) => state.portfolioData);
   const totalAssets = useSelector((state) => state.totalAssets);
-
+  const error = useSelector((state) => state.codes.error);
   const [selectedCurrency, setSelectedCurrency] = useState("");
 
   const data = useSelector((state) =>
@@ -29,25 +31,24 @@ export default function Home() {
   );
 
   const handleSelection = (e) => {
-    setSelectedCurrency([e.item.key, e.item.value]);
+    setSelectedCurrency(e.item.key);
   };
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(getCurrencies());
-
     if (isLogin) {
-      dispatch(getPortfolio(userName));
+      dispatch(getPortfolio());
+      dispatch(getCurrencies());
       dispatch(getTotalAssets(userName));
     }
-  }, []);
+  }, [userName]);
 
   return (
     <div>
       {isLogin ? (
         <div>
           <AppNavbar />
+          {error ? <Alert color="warning">{error}</Alert> : ""}
+
           <div className="d-flex justify-content-center align-items-center">
             <h2>TotalAssets:{totalAssets}</h2>
             <MdMonetizationOn size={30} />
@@ -57,6 +58,8 @@ export default function Home() {
             <ReactSearchBox
               placeholder="Search for currency"
               onSelect={handleSelection}
+              leftIcon={<FcSearch />}
+              iconBoxSize="48px"
               value="Doe"
               data={data}
               callback={(/** @type {any} */ record) => console.log(record)}

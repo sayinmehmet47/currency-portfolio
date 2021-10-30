@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { Alert } from "reactstrap";
-import { login } from "../store/Actions/AuthAcrtions";
+import { login } from "../store/Actions/AuthActions";
 
 const Login = (props) => {
   const [logins, setLogins] = useState(false);

@@ -1,4 +1,10 @@
-import { PORTFOLIO_START, USER_LOGOUT } from "../Actions/actions";
+import {
+  ADD_CURRENCY,
+  BUY_CURRENCY,
+  PORTFOLIO_START,
+  SELL_CURRENCY,
+  USER_LOGOUT,
+} from "../Actions/actions";
 
 const initialState = [];
 
@@ -8,6 +14,12 @@ export const portfolioReducer = (state = initialState, action) => {
       return action.payload;
     case USER_LOGOUT:
       return [];
+    case SELL_CURRENCY:
+      return action.payload;
+    case BUY_CURRENCY:
+      return action.payload;
+    case ADD_CURRENCY:
+      return action.payload;
     default:
       return state;
   }
