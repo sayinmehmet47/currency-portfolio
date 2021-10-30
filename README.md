@@ -1,3 +1,5 @@
+https://currency-portfolio.netlify.app/
+
 1. When the user opens the page for the first time, he encounters the login page. If there is no account, we redirect to the registration page. Here we ask for the name and surname and save it to the local storage. Then we direct the user to the attached screen. The user's initial balance will be $10,000. The balance and total portfolio value of the user at any point will be kept in the local storage and will be updated in the local storage according to the transactions made.
 2. We put an icon and/or application name in the upper left corner of this screen.
 3. In the upper right corner of this screen, we put the user's name in localStorage with a profile picture. 4. In the middle of the screen, we create a search box where users can search for currencies, and a table with the received currencies at the bottom.
