@@ -148,7 +148,7 @@ export const buyCurrencyFromList = (input) => (dispatch, getState) => {
   const portfolio = getState().portfolioData;
   const toCurrency = getState().codes.toCurrency;
   const fromCurrency = getState().codes.fromCurrency;
-
+  const user = getState().auth.user.name;
   const name = getState().codes.data.filter((e) => e[0] === toCurrency)[0][1];
 
   const rate = getState().codes.rates;
@@ -174,6 +174,14 @@ export const buyCurrencyFromList = (input) => (dispatch, getState) => {
     ];
 
     dispatch({ type: ADD_CURRENCY, payload: newPortfolio });
+    const localPortfolio = JSON.parse(localStorage.getItem(user));
+    localStorage.setItem(
+      user,
+      JSON.stringify({
+        ...localPortfolio,
+        portfolio: newPortfolio,
+      })
+    );
   } else {
     const newPortfolio = portfolio.map((e) => {
       if (e.acronym === toCurrency) {
@@ -185,5 +193,13 @@ export const buyCurrencyFromList = (input) => (dispatch, getState) => {
       return e;
     });
     dispatch({ type: ADD_CURRENCY, payload: newPortfolio });
+    const localPortfolio = JSON.parse(localStorage.getItem(user));
+    localStorage.setItem(
+      user,
+      JSON.stringify({
+        ...localPortfolio,
+        portfolio: newPortfolio,
+      })
+    );
   }
 };
