@@ -31,14 +31,13 @@ const Login = (props) => {
   };
   return (
     <TopBanner>
-      {!logins && attempt ? (
-        <Alert color="warning">Please register new account</Alert>
-      ) : null}
-
       <Form
         className="d-flex flex-column border bordered w-50 mx-auto p-5 shadow-lg  justify-content-center "
         onSubmit={handleOnSubmit}
       >
+        {!logins && attempt ? (
+          <Alert color="warning">Please register new account</Alert>
+        ) : null}
         <h1>Login</h1>
         <hr />
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
