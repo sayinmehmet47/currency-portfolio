@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import { register } from "../store/Actions/AuthActions";
+import { TopBanner } from "./Login.elements";
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -31,9 +32,9 @@ export default function Register() {
   };
 
   return (
-    <div>
+    <TopBanner>
       <Form
-        className="w-50 mx-auto border border-secondary mt-5 p-4"
+        className="w-50 mx-auto border bordered p-5 shadow-lg"
         onSubmit={handleOnSubmit}
       >
         <h1>Register</h1>
@@ -66,6 +67,6 @@ export default function Register() {
           Register
         </Button>
       </Form>
-    </div>
+    </TopBanner>
   );
 }

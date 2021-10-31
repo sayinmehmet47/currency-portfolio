@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { Alert } from "reactstrap";
 import { login } from "../store/Actions/AuthActions";
-
+import { TopBanner } from "./Login.elements";
 const Login = (props) => {
   const [logins, setLogins] = useState(false);
   const [attempt, setAttempt] = useState(false);
@@ -30,13 +30,13 @@ const Login = (props) => {
     }
   };
   return (
-    <>
+    <TopBanner>
       {!logins && attempt ? (
         <Alert color="warning">Please register new account</Alert>
       ) : null}
 
       <Form
-        className="w-50 mx-auto border border-secondary mt-5 p-5"
+        className="d-flex flex-column border bordered w-50 mx-auto p-5 shadow-lg  justify-content-center "
         onSubmit={handleOnSubmit}
       >
         <h1>Login</h1>
@@ -62,7 +62,7 @@ const Login = (props) => {
           Register
         </Link>
       </Form>
-    </>
+    </TopBanner>
   );
 };
 
