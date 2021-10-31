@@ -79,6 +79,7 @@ export const PurchaseModal = (props) => {
 
     if (amount && currentRate && currentRate !== 1) {
       dispatch(buyCurrencyFromList(JSON.parse(amount)));
+      setAmount("");
     }
   };
 
@@ -90,6 +91,8 @@ export const PurchaseModal = (props) => {
   return (
     <div className="mx-2">
       <Modal isOpen={modal} className={className}>
+        {error ? <Alert color="warning">{error}</Alert> : null}
+
         <ModalHeader toggle={closeModal}>
           <div className="d-flex">
             {holdedCurrencies.map((acronym, index) => {

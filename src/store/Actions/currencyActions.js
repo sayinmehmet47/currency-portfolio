@@ -155,51 +155,67 @@ export const buyCurrencyFromList = (input) => (dispatch, getState) => {
 
   const isInList = portfolio.find((e) => e.acronym === toCurrency);
 
-  if (!isInList) {
-    let newPortfolio = portfolio.map((e) => {
-      if (e.acronym === fromCurrency) {
-        return { ...e, totalAsset: e.totalAsset - input / rate };
-      }
+  if (
+    portfolio.filter((e) => e.acronym === fromCurrency)[0].totalAsset * rate >
+    input
+  ) {
+    if (!isInList) {
+      let newPortfolio = portfolio.map((e) => {
+        if (e.acronym === fromCurrency) {
+          return { ...e, totalAsset: e.totalAsset - input / rate };
+        }
 
-      return e;
-    });
+        return e;
+      });
 
-    newPortfolio = [
-      ...newPortfolio,
-      {
-        acronym: toCurrency,
-        name: name,
-        totalAsset: input,
-      },
-    ];
+      newPortfolio = [
+        ...newPortfolio,
+        {
+          acronym: toCurrency,
+          name: name,
+          totalAsset: input,
+        },
+      ];
 
-    dispatch({ type: ADD_CURRENCY, payload: newPortfolio });
-    const localPortfolio = JSON.parse(localStorage.getItem(user));
-    localStorage.setItem(
-      user,
-      JSON.stringify({
-        ...localPortfolio,
-        portfolio: newPortfolio,
-      })
-    );
+      dispatch({ type: ADD_CURRENCY, payload: newPortfolio });
+      const localPortfolio = JSON.parse(localStorage.getItem(user));
+      localStorage.setItem(
+        user,
+        JSON.stringify({
+          ...localPortfolio,
+          portfolio: newPortfolio,
+        })
+      );
+    } else {
+      const newPortfolio = portfolio.map((e) => {
+        if (e.acronym === toCurrency) {
+          return { ...e, totalAsset: e.totalAsset + input };
+        }
+        if (e.acronym === fromCurrency) {
+          return { ...e, totalAsset: e.totalAsset - input / rate };
+        }
+        return e;
+      });
+      dispatch({ type: ADD_CURRENCY, payload: newPortfolio });
+      const localPortfolio = JSON.parse(localStorage.getItem(user));
+      localStorage.setItem(
+        user,
+        JSON.stringify({
+          ...localPortfolio,
+          portfolio: newPortfolio,
+        })
+      );
+    }
   } else {
-    const newPortfolio = portfolio.map((e) => {
-      if (e.acronym === toCurrency) {
-        return { ...e, totalAsset: e.totalAsset + input };
-      }
-      if (e.acronym === fromCurrency) {
-        return { ...e, totalAsset: e.totalAsset - input / rate };
-      }
-      return e;
+    dispatch({
+      type: UNSUFFICENT_BALANCE,
+      payload: "You dont have enough balance",
     });
-    dispatch({ type: ADD_CURRENCY, payload: newPortfolio });
-    const localPortfolio = JSON.parse(localStorage.getItem(user));
-    localStorage.setItem(
-      user,
-      JSON.stringify({
-        ...localPortfolio,
-        portfolio: newPortfolio,
-      })
-    );
+
+    setTimeout(() => {
+      dispatch({
+        type: CLEAR_ERROR,
+      });
+    }, 3000);
   }
 };
