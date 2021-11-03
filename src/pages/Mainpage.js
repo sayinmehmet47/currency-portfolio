@@ -51,10 +51,10 @@ export default function Mainpage() {
             <Collapse navbar isOpen={!collapsed}>
               <Nav navbar>
                 <NavItem>
-                  <NavLink href="/login/">Login</NavLink>
+                  <Link to="/login">Login</Link>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/register/">Register</NavLink>
+                  <Link to="/register">Register</Link>
                 </NavItem>
               </Nav>
             </Collapse>
