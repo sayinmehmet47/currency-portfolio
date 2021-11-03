@@ -63,7 +63,7 @@ export default function Register() {
             onChange={handleChangeSurname}
           />
         </FormGroup>
-        <Button color="success" className="px-5 mt-5">
+        <Button color="success" className="px-5 mt-5 btn-block">
           Register
         </Button>
       </Form>

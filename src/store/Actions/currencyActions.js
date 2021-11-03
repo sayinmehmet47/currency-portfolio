@@ -84,6 +84,26 @@ export const sellCurrency = (input) => (dispatch, getState) => {
       })
     );
     dispatch({ type: SELL_CURRENCY, payload: newPortfolio });
+  } else if (
+    portfolio.filter((e) => e.acronym === fromCurrency)[0].totalAsset === input
+  ) {
+    console.log(portfolio);
+    let newPortfolio = portfolio.filter((e) => e.acronym !== fromCurrency);
+    newPortfolio = newPortfolio.map((e) => {
+      if (e.acronym === toCurrency) {
+        return { ...e, totalAsset: e.totalAsset + input * rate };
+      }
+      return e;
+    });
+    const localPortfolio = JSON.parse(localStorage.getItem(user));
+    localStorage.setItem(
+      user,
+      JSON.stringify({
+        ...localPortfolio,
+        portfolio: newPortfolio,
+      })
+    );
+    dispatch({ type: SELL_CURRENCY, payload: newPortfolio });
   } else {
     dispatch({
       type: UNSUFFICENT_BALANCE,

@@ -68,7 +68,6 @@ export const SellingModal = (props) => {
     dispatch(updateToCurrency(acronym));
     dispatch(getCurrencyRate());
   };
-
   return (
     <div className="mx-2">
       <Button color="danger" onClick={toggle}>

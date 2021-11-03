@@ -42,7 +42,7 @@ export const AppNavbar = () => {
             <NavItem>
               <NavLink
                 style={{ background: "red", cursor: "pointer" }}
-                className="d-flex align-items-center justify-content-center ms-4"
+                className="d-flex align-items-center justify-content-center ms-4 rounded"
                 onClick={() => dispatch(logout())}
               >
                 Logout

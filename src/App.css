@@ -21,3 +21,34 @@ input.search {
   background-position-y: 10px;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADbSURBVDhP5ZI9C4MwEIb7//+BEDgICA6C4OQgBJy6dRIEB6EgCNkEJ4e3iT2oHzH9wHbpAwfyJvfkJDnhYH4kHDVKlSAigSAQoCiBKjVGXvaxFXZnxBQYkSlBICII+22K4jM63rbHSthCSdsskVX9Y6KxR5XJSSpVy6GbpbBKp6aw0BzM0ShCe1iKihMXC6EuQtMQwukzPFu3fFd4+C+/cimUNxy6WQkNnmdzL3NYPfDmLVuhZf2wZYz80qDkKX1St3CXAfVMqq4cz3hTaGEpmctxDPmB0M/fCYEbAwZYyVKYcroAAAAASUVORK5CYII=);
 }
+
+.switch-wrapper {
+  position: relative;
+}
+
+.parallax {
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.7)),
+      to(rgba(0, 0, 0, 0.7))
+    ),
+    url("./images/money.png") repeat fixed 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("./images/money.png") repeat fixed 100%;
+  background-size: cover;
+  color: aliceblue;
+
+  z-index: -1;
+}
+
+.parallax-inner {
+  padding-top: 20%;
+  padding-bottom: 20%;
+}
+.parallax-inner-2 {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20%;
+}

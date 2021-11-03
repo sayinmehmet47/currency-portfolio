@@ -53,7 +53,7 @@ const Login = (props) => {
             onChange={handleChangeName}
           />
         </FormGroup>
-        <Button color="danger" className="px-5 mt-5">
+        <Button color="success" className="px-5 mt-5">
           Login
         </Button>{" "}
         <br />

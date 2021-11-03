@@ -50,8 +50,7 @@ export default function Home() {
           {error ? <Alert color="warning">{error}</Alert> : ""}
 
           <div className="d-flex justify-content-center align-items-center">
-            <h2>TotalAssets:{totalAssets}</h2>
-            <MdMonetizationOn size={30} />
+            <h2>TotalAssets:{totalAssets}$</h2>
           </div>
 
           <div className="w-50 mx-auto mt-5">
@@ -72,7 +71,7 @@ export default function Home() {
           <span className="pb-5">{lastUpdated}</span>
         </div>
       ) : (
-        history.push("/login")
+        history.push("/mainpage")
       )}
     </div>
   );

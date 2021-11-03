@@ -15,7 +15,6 @@ export const logout = () => (dispatch) => {
 export const getTotalAssets = () => (dispatch, getState) => {
   const user = getState().auth.user.name;
   const portfolio = getState().portfolioData;
-  console.log(portfolio);
 
   axios
     .get(
