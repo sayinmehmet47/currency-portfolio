@@ -50,8 +50,6 @@ export default function Register() {
             placeholder="john"
             onChange={handleChangeName}
           />
-        </FormGroup>
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Label for="name" className="mr-sm-2">
             Surname
           </Label>
@@ -62,10 +60,12 @@ export default function Register() {
             placeholder="doe"
             onChange={handleChangeSurname}
           />
+          <div className="d-grid gap-2">
+            <Button color="success" className=" mt-4">
+              Register
+            </Button>
+          </div>
         </FormGroup>
-        <Button color="success" className="px-5 mt-5 btn-block">
-          Register
-        </Button>
       </Form>
     </TopBanner>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import logo from "../images/logo.svg";
+import logo from "../images/newest.png";
 import { CgProfile } from "react-icons/cg";
 
 import {
@@ -25,7 +25,7 @@ export const AppNavbar = () => {
     <div>
       <Navbar color="dark" dark expand="md" className="mb-5">
         <NavbarBrand href="/" className="mr-auto">
-          <img src={logo} alt="fdf" width={80} height={50} />
+          <img src={logo} alt="fdf" width={50} height={50} />
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse

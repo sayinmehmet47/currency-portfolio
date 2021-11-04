@@ -6,6 +6,8 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { Alert } from "reactstrap";
 import { login } from "../store/Actions/AuthActions";
 import { TopBanner } from "./Login.elements";
+import Logo from "../images/logo-black.png";
+
 const Login = (props) => {
   const [logins, setLogins] = useState(false);
   const [attempt, setAttempt] = useState(false);
@@ -31,6 +33,14 @@ const Login = (props) => {
   };
   return (
     <TopBanner>
+      <img
+        src={Logo}
+        style={{ position: "absolute", top: "10px", left: "5px" }}
+        className="m-3"
+        alt="fdf"
+        width={80}
+        height={80}
+      />
       <Form
         className="d-flex flex-column border bordered w-50 mx-auto p-5 shadow-lg  justify-content-center "
         onSubmit={handleOnSubmit}
@@ -53,9 +63,11 @@ const Login = (props) => {
             onChange={handleChangeName}
           />
         </FormGroup>
-        <Button color="success" className="px-5 mt-5">
-          Login
-        </Button>{" "}
+        <div className="d-grid gap-2">
+          <Button color="success" className=" mt-4">
+            Login
+          </Button>
+        </div>
         <br />
         <Link className="float-start  py-3" to="/register">
           Register

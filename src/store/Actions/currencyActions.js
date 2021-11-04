@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import {
   ADD_CURRENCY,
   BUY_CURRENCY,
@@ -12,27 +13,28 @@ import {
   TO_CURRENCY,
   UNSUFFICENT_BALANCE,
 } from "./actions";
-
 export const getCurrencies = () => (dispatch, getState) => {
+  const key = process.env.REACT_APP_ACTIVATION_KEY;
+
+  require("dotenv").config();
   dispatch({ type: CURRENCY_LOADING });
-  axios
-    .get("https://v6.exchangerate-api.com/v6/0f7ced3b83c72378b5294477/codes")
-    .then((res) =>
-      dispatch({
-        type: CURRENCY_LOADED,
-        payload: res.data.supported_codes,
-      })
-    );
+  axios.get(`https://v6.exchangerate-api.com/v6/${key}/codes`).then((res) =>
+    dispatch({
+      type: CURRENCY_LOADED,
+      payload: res.data.supported_codes,
+    })
+  );
 };
 
 export const getCurrencyRate = () => (dispatch, getState) => {
+  const key = process.env.REACT_APP_ACTIVATION_KEY;
+
   const fromCurrency = getState().codes.fromCurrency;
   const toCurrency = getState().codes.toCurrency;
+  require("dotenv").config();
 
   axios
-    .get(
-      `https://v6.exchangerate-api.com/v6/0f7ced3b83c72378b5294477/latest/${fromCurrency}`
-    )
+    .get(`https://v6.exchangerate-api.com/v6/${key}/latest/${fromCurrency}`)
     .then((res) =>
       dispatch({
         type: CURRENCY_RATE,

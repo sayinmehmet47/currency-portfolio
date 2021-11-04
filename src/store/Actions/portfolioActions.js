@@ -15,11 +15,10 @@ export const logout = () => (dispatch) => {
 export const getTotalAssets = () => (dispatch, getState) => {
   const user = getState().auth.user.name;
   const portfolio = getState().portfolioData;
+  const key = process.env.REACT_APP_ACTIVATION_KEY;
 
   axios
-    .get(
-      "https://v6.exchangerate-api.com/v6/0f7ced3b83c72378b5294477/latest/USD"
-    )
+    .get(`https://v6.exchangerate-api.com/v6/${key}/latest/USD`)
     .then((res) => {
       const rates = res.data.conversion_rates;
       const total = portfolio
