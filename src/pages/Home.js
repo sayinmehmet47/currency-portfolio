@@ -53,7 +53,7 @@ export default function Home() {
             <h2>TotalAssets:{totalAssets}$</h2>
           </div>
 
-          <div className="w-50 mx-auto mt-5 shadow">
+          <div className="w-50 mx-auto mt-5">
             <ReactSearchBox
               placeholder="Search for currency"
               onSelect={handleSelection}
