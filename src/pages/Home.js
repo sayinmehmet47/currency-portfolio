@@ -43,7 +43,7 @@ export default function Home() {
   }, [userName]);
 
   return (
-    <div class="">
+    <div class="home">
       {isLogin ? (
         <div>
           <AppNavbar />
