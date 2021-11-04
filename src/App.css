@@ -55,6 +55,15 @@ input.search {
   margin-right: auto;
   margin-top: 20%;
 }
+.close {
+  border: none;
+  background: none;
+  border: black;
+  background: white;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
 
 @keyframes zoom-out {
   0% {
