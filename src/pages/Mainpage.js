@@ -68,7 +68,7 @@ export default function Mainpage() {
         />
       </div>
 
-      <div class=" d-block d-lg-none">
+      <div className=" d-block d-lg-none">
         <div>
           <Navbar color="faded" light>
             <NavbarBrand className="me-auto" href="/">

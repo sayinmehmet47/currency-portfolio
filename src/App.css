@@ -37,9 +37,12 @@ input.search {
     url("./images/money.png") repeat fixed 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("./images/money.png") repeat fixed 100%;
-  background-size: cover;
   color: aliceblue;
-
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation-name: zoom-out;
+  animation-duration: 4s;
+  animation-delay: 2s;
   z-index: -1;
 }
 
@@ -51,4 +54,14 @@ input.search {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20%;
+}
+
+@keyframes zoom-out {
+  0% {
+    background-position-y: initial;
+  }
+
+  100% {
+    background-position-y: bottom;
+  }
 }

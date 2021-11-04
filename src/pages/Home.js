@@ -43,7 +43,7 @@ export default function Home() {
   }, [userName]);
 
   return (
-    <div>
+    <div class="">
       {isLogin ? (
         <div>
           <AppNavbar />
@@ -53,7 +53,7 @@ export default function Home() {
             <h2>TotalAssets:{totalAssets}$</h2>
           </div>
 
-          <div className="w-50 mx-auto mt-5">
+          <div className="w-50 mx-auto mt-5 shadow">
             <ReactSearchBox
               placeholder="Search for currency"
               onSelect={handleSelection}

@@ -55,7 +55,7 @@ export const PortfolioTable = () => {
     page,
   } = useTable({ columns, data }, useSortBy, usePagination);
   return (
-    <div className="d-flex flex-column mb-5 mt-5 mx-5">
+    <div className="d-flex flex-column mb-5 mt-5 mx-5 shadow">
       <table {...getTableProps()} style={{ borderRadius: "15px" }}>
         <thead>
           {headerGroups.map((headerGroup) => (
