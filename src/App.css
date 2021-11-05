@@ -67,6 +67,8 @@ input.search {
 
 .home {
   background-image: url("./images/background.png");
+  width: 100vw;
+  height: 100vh;
 }
 
 @keyframes zoom-out {

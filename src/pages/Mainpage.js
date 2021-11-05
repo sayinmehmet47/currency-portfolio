@@ -68,7 +68,7 @@ export default function Mainpage() {
         />
       </div>
 
-      <div className=" d-block d-lg-none">
+      <div className="d-block d-lg-none">
         <div>
           <Navbar color="faded" light>
             <NavbarBrand className="me-auto" href="/">
@@ -78,19 +78,27 @@ export default function Mainpage() {
             <Collapse navbar isOpen={!collapsed}>
               <Nav navbar>
                 <NavItem>
-                  <Link to="/login">Login</Link>
+                  <Link
+                    to="/login"
+                    className="btn btn-primary mx-5 my-1 d-block"
+                  >
+                    Login
+                  </Link>
                 </NavItem>
                 <NavItem>
-                  <Link to="/register">Register</Link>
+                  <Link
+                    to="/register"
+                    className="btn btn-success mx-5 my-1 d-block"
+                  >
+                    Register
+                  </Link>
                 </NavItem>
               </Nav>
             </Collapse>
           </Navbar>
         </div>
-        <img src={Image} class="img-fluid " alt="mushroom"></img>
-        <h2 className="position-absolute mt-4 top-50 start-50 translate-middle-x text-light bg-dark">
-          Trade on MS-BANK
-        </h2>
+        <img src={Image} class="img-fluid " alt="bank-pic"></img>
+        <h2 className="text-light bg-dark">Trade on MS-BANK</h2>
       </div>
       <CardModal />
     </div>

@@ -1,20 +1,116 @@
 import Button from "@restart/ui/esm/Button";
 import React from "react";
-import { Card, CardBody, CardText, CardTitle } from "reactstrap";
+import {
+  Card,
+  CardBody,
+  CardText,
+  CardTitle,
+  Col,
+  Container,
+  Row,
+} from "reactstrap";
 
 export default function CardModal() {
   return (
-    <div>
-      <Card className="shadow border bordered m-3 p-3">
-        <CardBody>
-          <CardTitle tag="h5">Card title</CardTitle>
-          <CardText>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </CardText>
-          <Button className="btn btn-primary">Button</Button>
-        </CardBody>
-      </Card>
-    </div>
+    <Container fluid className="mt-4 p-5">
+      <Row className="m-2 shadow  p-5" xs={1} sm={2} md={3} lg={8}>
+        <Col>
+          <Row>
+            <Col className="col-3">⬆</Col>
+            <Col className="col-9">
+              <Row>
+                <Col className="fw-bold">USD/TRY:</Col>
+                <Col>12</Col>
+              </Row>
+              <Row>
+                {" "}
+                <Col className="fw-bold">PRICE</Col>
+                <Col>12</Col>
+              </Row>
+            </Col>
+          </Row>
+        </Col>
+        <Col>
+          <Row>
+            <Col className="col-3">⬆</Col>
+            <Col className="col-9">
+              <Row>
+                <Col className="fw-bold">USD/TRY:</Col>
+                <Col>12</Col>
+              </Row>
+              <Row>
+                {" "}
+                <Col className="fw-bold">PRICE</Col>
+                <Col>12</Col>
+              </Row>
+            </Col>
+          </Row>
+        </Col>
+        <Col>
+          <Row>
+            <Col className="col-3">⬆</Col>
+            <Col className="col-9">
+              <Row>
+                <Col className="fw-bold">USD/TRY:</Col>
+                <Col>12</Col>
+              </Row>
+              <Row>
+                {" "}
+                <Col className="fw-bold">PRICE</Col>
+                <Col>12</Col>
+              </Row>
+            </Col>
+          </Row>
+        </Col>
+        <Col>
+          <Row>
+            <Col className="col-3">⬆</Col>
+            <Col className="col-9">
+              <Row>
+                <Col className="fw-bold">USD/TRY:</Col>
+                <Col>12</Col>
+              </Row>
+              <Row>
+                {" "}
+                <Col className="fw-bold">PRICE</Col>
+                <Col>12</Col>
+              </Row>
+            </Col>
+          </Row>
+        </Col>
+        <Col>
+          <Row>
+            <Col className="col-3">⬆</Col>
+            <Col className="col-9">
+              <Row>
+                <Col className="fw-bold">USD/TRY:</Col>
+                <Col>12</Col>
+              </Row>
+              <Row>
+                {" "}
+                <Col className="fw-bold">PRICE</Col>
+                <Col>12</Col>
+              </Row>
+            </Col>
+          </Row>
+        </Col>
+        <Col>
+          <Row>
+            <Col className="col-3">⬆</Col>
+            <Col className="col-9">
+              <Row>
+                <Col className="fw-bold">USD/TRY:</Col>
+                <Col>12</Col>
+              </Row>
+              <Row>
+                {" "}
+                <Col className="fw-bold">PRICE</Col>
+                <Col>12</Col>
+              </Row>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Container>
   );
 }
