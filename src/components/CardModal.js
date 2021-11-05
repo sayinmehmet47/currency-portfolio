@@ -1,5 +1,9 @@
 import Button from "@restart/ui/esm/Button";
-import React from "react";
+import React, { useEffect } from "react";
+import { BsFillArrowUpCircleFill } from "react-icons/bs";
+import { BsFillArrowDownCircleFill } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+
 import {
   Card,
   CardBody,
@@ -9,103 +13,121 @@ import {
   Container,
   Row,
 } from "reactstrap";
+import { dailyCurrency } from "../store/Actions/currencyActions";
 
 export default function CardModal() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(dailyCurrency());
+  }, []);
+
+  const currencyDaily = useSelector((state) => state.currencyDaily);
   return (
     <Container fluid className="mt-4 p-5">
       <Row className="m-2 shadow  p-5" xs={1} sm={2} md={3} lg={8}>
         <Col>
           <Row>
-            <Col className="col-3">⬆</Col>
+            <BsFillArrowUpCircleFill className="col-3" color="green" />
+            {/* <Col >⬆</Col> */}
             <Col className="col-9">
               <Row>
-                <Col className="fw-bold">USD/TRY:</Col>
-                <Col>12</Col>
+                <Col className="">USD/TRY</Col>
               </Row>
               <Row>
                 {" "}
-                <Col className="fw-bold">PRICE</Col>
-                <Col>12</Col>
+                <Col className="fw-bold">
+                  {" "}
+                  {Number.parseFloat(1 / currencyDaily["USD"]).toFixed(2)}
+                </Col>
               </Row>
             </Col>
           </Row>
         </Col>
         <Col>
           <Row>
-            <Col className="col-3">⬆</Col>
+            <BsFillArrowUpCircleFill className="col-3" color="green" />
+            {/* <Col >⬆</Col> */}
             <Col className="col-9">
               <Row>
-                <Col className="fw-bold">USD/TRY:</Col>
-                <Col>12</Col>
+                <Col className="">CAD/TRY</Col>
               </Row>
               <Row>
                 {" "}
-                <Col className="fw-bold">PRICE</Col>
-                <Col>12</Col>
+                <Col className="fw-bold">
+                  {Number.parseFloat(1 / currencyDaily["CAD"]).toFixed(2)}
+                </Col>
               </Row>
             </Col>
           </Row>
         </Col>
         <Col>
           <Row>
-            <Col className="col-3">⬆</Col>
+            <BsFillArrowUpCircleFill className="col-3" color="green" />
+            {/* <Col >⬆</Col> */}
             <Col className="col-9">
               <Row>
-                <Col className="fw-bold">USD/TRY:</Col>
-                <Col>12</Col>
+                <Col className="">EUR/TRY</Col>
               </Row>
               <Row>
                 {" "}
-                <Col className="fw-bold">PRICE</Col>
-                <Col>12</Col>
+                <Col className="fw-bold">
+                  {" "}
+                  {Number.parseFloat(1 / currencyDaily["EUR"]).toFixed(2)}
+                </Col>
               </Row>
             </Col>
           </Row>
         </Col>
         <Col>
           <Row>
-            <Col className="col-3">⬆</Col>
+            <BsFillArrowDownCircleFill className="col-3" color="red" />
+            {/* <Col >⬆</Col> */}
             <Col className="col-9">
               <Row>
-                <Col className="fw-bold">USD/TRY:</Col>
-                <Col>12</Col>
+                <Col className="">GBP/TRY</Col>
               </Row>
               <Row>
                 {" "}
-                <Col className="fw-bold">PRICE</Col>
-                <Col>12</Col>
+                <Col className="fw-bold">
+                  {" "}
+                  {Number.parseFloat(1 / currencyDaily["GBP"]).toFixed(2)}
+                </Col>
               </Row>
             </Col>
           </Row>
         </Col>
         <Col>
           <Row>
-            <Col className="col-3">⬆</Col>
+            <BsFillArrowUpCircleFill className="col-3" color="green" />
+            {/* <Col >⬆</Col> */}
             <Col className="col-9">
               <Row>
-                <Col className="fw-bold">USD/TRY:</Col>
-                <Col>12</Col>
+                <Col className="">CHF/TRY</Col>
               </Row>
               <Row>
                 {" "}
-                <Col className="fw-bold">PRICE</Col>
-                <Col>12</Col>
+                <Col className="fw-bold">
+                  {" "}
+                  {Number.parseFloat(1 / currencyDaily["CHF"]).toFixed(2)}
+                </Col>
               </Row>
             </Col>
           </Row>
         </Col>
         <Col>
           <Row>
-            <Col className="col-3">⬆</Col>
+            <BsFillArrowDownCircleFill className="col-3" color="red" />
+            {/* <Col >⬆</Col> */}
             <Col className="col-9">
               <Row>
-                <Col className="fw-bold">USD/TRY:</Col>
-                <Col>12</Col>
+                <Col className="">RUB/TRY</Col>
               </Row>
               <Row>
                 {" "}
-                <Col className="fw-bold">PRICE</Col>
-                <Col>12</Col>
+                <Col className="fw-bold">
+                  {" "}
+                  {Number.parseFloat(1 / currencyDaily["RUB"]).toFixed(2)}
+                </Col>
               </Row>
             </Col>
           </Row>

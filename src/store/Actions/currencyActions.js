@@ -5,6 +5,7 @@ import {
   BUY_CURRENCY,
   CLEAR_ERROR,
   CLEAR_RATE,
+  CURRENCY_DAILY_START,
   CURRENCY_LOADED,
   CURRENCY_LOADING,
   CURRENCY_RATE,
@@ -240,4 +241,12 @@ export const buyCurrencyFromList = (input) => (dispatch, getState) => {
       });
     }, 3000);
   }
+};
+export const dailyCurrency = (input) => (dispatch, getState) => {
+  axios.get(`https://api.vatcomply.com/rates?base=TRY`).then((res) =>
+    dispatch({
+      type: CURRENCY_DAILY_START,
+      payload: res.data.rates,
+    })
+  );
 };
