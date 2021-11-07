@@ -25,7 +25,7 @@ export default function CardModal() {
   const currencyDaily = useSelector((state) => state.currencyDaily);
 
   return (
-    <Container fluid className="mt-4 p-5">
+    <Container fluid className="mt-2 p-5">
       {currencyDaily.USD ? (
         <Row className="m-2 shadow  p-5" xs={1} sm={2} md={3} lg={8}>
           <Col className="mb-2">

@@ -105,12 +105,12 @@ export default function Mainpage() {
         <h2 className="text-light bg-dark">Trade on MT-BANK</h2>
       </div>
       <CardModal />
-      <Row>
-        <Col lg={8} md={6} sm={6}>
+      <Row lg={2} md={1} sm={1}>
+        <Col lg="9">
           {" "}
           <DailyNews />
         </Col>
-        <Col lg={4} md={6} sm={6}>
+        <Col lg="3">
           {" "}
           <Converter />
         </Col>
