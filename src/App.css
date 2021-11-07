@@ -71,6 +71,34 @@ input.search {
   height: 100vh;
 }
 
+.newBtnSpecial {
+  opacity: 0;
+  background-image: none;
+}
+.TrendingNow-heading {
+  font-weight: 800;
+  color: #002f6c;
+  padding-top: 15px;
+  margin-bottom: 10px;
+  margin-top: 0;
+  border-top: 1px solid #747474;
+  position: relative;
+  font-size: 30px;
+  line-height: 37px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  width: 100%;
+}
+.TrendingNow-heading:before {
+  content: "";
+  height: 6px;
+  width: 110px;
+  background-color: #fcb700;
+  position: absolute;
+  top: -6px;
+  left: 0;
+}
+
 @keyframes zoom-out {
   0% {
     background-position-y: initial;

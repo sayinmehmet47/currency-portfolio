@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "./Reducers/authReducer";
 import { currencyDailyReducer } from "./Reducers/currencyDaily";
+import { currencyNews } from "./Reducers/currencyNews";
 import { currencyReducer } from "./Reducers/currencyReducer";
 import { portfolioReducer } from "./Reducers/portfolioReducer";
 import { totalAssetsReducer } from "./Reducers/totalAssetsReducer";
@@ -12,6 +13,7 @@ export const store = configureStore({
     portfolioData: portfolioReducer,
     totalAssets: totalAssetsReducer,
     currencyDaily: currencyDailyReducer,
+    currencyNews: currencyNews,
   },
 });
 

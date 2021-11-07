@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTable, useSortBy, usePagination } from "react-table";
+import { CSSTransition } from "react-transition-group";
 import { updateFromCurrency } from "../store/Actions/currencyActions";
 import { BuyingModal } from "./BuyingModal";
 import { SellingModal } from "./SellingModal";
@@ -55,7 +56,7 @@ export const PortfolioTable = () => {
     page,
   } = useTable({ columns, data }, useSortBy, usePagination);
   return (
-    <div className="d-flex flex-column mb-5 mt-5 mx-5 shadow">
+    <div className="d-flex flex-column mb-5 mt-5 ms-1 me-2 shadow">
       <table {...getTableProps()} style={{ borderRadius: "15px" }}>
         <thead>
           {headerGroups.map((headerGroup) => (

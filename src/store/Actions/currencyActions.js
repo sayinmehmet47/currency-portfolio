@@ -8,6 +8,7 @@ import {
   CURRENCY_DAILY_START,
   CURRENCY_LOADED,
   CURRENCY_LOADING,
+  CURRENCY_NEWS,
   CURRENCY_RATE,
   FROM_CURRENCY,
   SELL_CURRENCY,
@@ -243,10 +244,30 @@ export const buyCurrencyFromList = (input) => (dispatch, getState) => {
   }
 };
 export const dailyCurrency = (input) => (dispatch, getState) => {
-  axios.get(`https://api.vatcomply.com/rates?base=TRY`).then((res) =>
+  axios.get(`https://finans.truncgil.com/v3/today.json`).then((res) =>
     dispatch({
       type: CURRENCY_DAILY_START,
-      payload: res.data.rates,
+      payload: { ...res.data },
     })
   );
+};
+
+export const currencyNews = (count) => (dispatch, getState) => {
+  axios
+    .get(
+      `https://cnbc.p.rapidapi.com/news/v2/list-trending?tag=Articles&count=${count}`,
+      {
+        headers: {
+          Authorization: "x-rapidapi-host",
+          "x-rapidapi-key":
+            "b2649b1adbmsh465672d2c1b6ecep1b1b5bjsn85b3127af992",
+        },
+      }
+    )
+    .then((res) =>
+      dispatch({
+        type: CURRENCY_NEWS,
+        payload: res.data.data.mostPopularEntries.assets,
+      })
+    );
 };

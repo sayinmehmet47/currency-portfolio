@@ -18,9 +18,13 @@ import {
   CardTitle,
   CardSubtitle,
   CardText,
+  Col,
+  Row,
 } from "reactstrap";
 import Button from "@restart/ui/esm/Button";
 import CardModal from "../components/CardModal";
+import Converter from "../components/Converter";
+import DailyNews from "../components/DailyNews";
 
 export default function Mainpage() {
   const [collapsed, setCollapsed] = useState(true);
@@ -28,8 +32,8 @@ export default function Mainpage() {
   const toggleNavbar = () => setCollapsed(!collapsed);
   return (
     <div>
-      <div class="parallax d-none d-lg-flex">
-        <div class="parallax-inner">
+      <div className="parallax d-none d-lg-flex">
+        <div className="parallax-inner">
           <Link
             to="/login"
             className="btn btn-primary px-5"
@@ -53,7 +57,7 @@ export default function Mainpage() {
             REGISTER
           </Link>
         </div>
-        <div class="parallax-inner-2 text-center">
+        <div className="parallax-inner-2 text-center">
           <h1>Trade on MS-BANK</h1>
         </div>
         <img
@@ -97,10 +101,20 @@ export default function Mainpage() {
             </Collapse>
           </Navbar>
         </div>
-        <img src={Image} class="img-fluid " alt="bank-pic"></img>
-        <h2 className="text-light bg-dark">Trade on MS-BANK</h2>
+        <img src={Image} className="img-fluid " alt="bank-pic"></img>
+        <h2 className="text-light bg-dark">Trade on MT-BANK</h2>
       </div>
       <CardModal />
+      <Row>
+        <Col lg={8} md={6} sm={6}>
+          {" "}
+          <DailyNews />
+        </Col>
+        <Col lg={4} md={6} sm={6}>
+          {" "}
+          <Converter />
+        </Col>
+      </Row>
     </div>
   );
 }
