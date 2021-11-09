@@ -23,7 +23,7 @@ For the stocks data, two APIs\* are used:
 
 # Converter
 
-![mainpage-2](https://user-images.githubusercontent.com/75525090/140911895-f024b020-13fd-4c98-ad60-37437ac4d174.PNG)
+![converter](https://user-images.githubusercontent.com/75525090/140912728-613e67aa-cb30-4a25-88c2-8e1924733343.PNG)
 
 # Login
 
