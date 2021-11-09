@@ -58,7 +58,7 @@ export default function Mainpage() {
           </Link>
         </div>
         <div className="parallax-inner-2 text-center">
-          <h1>Trade on MS-BANK</h1>
+          <h1>Trade on MT-BANK</h1>
         </div>
         <img
           style={{

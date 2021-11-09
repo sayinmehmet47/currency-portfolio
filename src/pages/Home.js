@@ -5,7 +5,6 @@ import { AppNavbar } from "../../src/components/AppNavbar";
 import { PurchaseModal } from "../components/PurchaseModal";
 import ReactSearchBox from "react-search-box";
 import { PortfolioTable } from "../components/PortfolioTable";
-import { MdMonetizationOn } from "react-icons/md";
 import { FcSearch } from "react-icons/fc";
 import {
   getPortfolio,
@@ -66,7 +65,6 @@ export default function Home() {
             <PurchaseModal selected={selectedCurrency} />
           </div>
           <PortfolioTable />
-
           <span style={{ color: "red" }}>Last Updated: </span>
           <span className="pb-5">{lastUpdated}</span>
         </div>

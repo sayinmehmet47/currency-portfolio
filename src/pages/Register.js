@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import { Alert, Button, Form, FormGroup, Input, Label } from "reactstrap";
 import { register } from "../store/Actions/AuthActions";
 import { TopBanner } from "./Login.elements";
 
@@ -10,6 +10,7 @@ export default function Register() {
   const history = useHistory();
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
+  const [error, setError] = useState("");
   const handleChangeName = (e) => setName(e.target.value);
   const handleChangeSurname = (e) => setSurname(e.target.value);
 
@@ -26,47 +27,63 @@ export default function Register() {
     };
 
     // Attempt to login
-    dispatch(register(user));
-    localStorage.setItem(user.name, JSON.stringify(user));
-    history.push("/");
+
+    if (JSON.parse(localStorage.getItem(user.name))) {
+      setError("This account already exists");
+      setTimeout(() => {
+        setError();
+      }, 3000);
+    } else if (user.name === "") {
+      setError("Please enter an account");
+      setTimeout(() => {
+        setError();
+      }, 3000);
+    } else {
+      dispatch(register(user));
+      localStorage.setItem(user.name, JSON.stringify(user));
+      history.push("/");
+    }
   };
 
   return (
-    <TopBanner>
-      <Form
-        className="w-50 mx-auto border bordered p-5 shadow-lg"
-        onSubmit={handleOnSubmit}
-      >
-        <h1>Register</h1>
-        <hr />
-        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-          <Label for="exampleEmail" className="mr-sm-2">
-            Name
-          </Label>
-          <Input
-            type="name"
-            name="name"
-            id="exampleName"
-            placeholder="john"
-            onChange={handleChangeName}
-          />
-          <Label for="name" className="mr-sm-2">
-            Surname
-          </Label>
-          <Input
-            type="name"
-            name="name"
-            id="exampleSurname"
-            placeholder="doe"
-            onChange={handleChangeSurname}
-          />
-          <div className="d-grid gap-2">
-            <Button color="success" className=" mt-4">
-              Register
-            </Button>
-          </div>
-        </FormGroup>
-      </Form>
-    </TopBanner>
+    <>
+      <TopBanner>
+        <Form
+          className="w-50 mx-auto border bordered p-5 shadow-lg"
+          onSubmit={handleOnSubmit}
+        >
+          {error ? <Alert color="warning">{error}</Alert> : null}
+          <h1>Register</h1>
+          <hr />
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+            <Label for="exampleEmail" className="mr-sm-2">
+              Name
+            </Label>
+            <Input
+              type="name"
+              name="name"
+              id="exampleName"
+              placeholder="john"
+              onChange={handleChangeName}
+            />
+            <Label for="name" className="mr-sm-2">
+              Surname
+            </Label>
+            <Input
+              type="name"
+              name="name"
+              id="exampleSurname"
+              placeholder="doe"
+              onChange={handleChangeSurname}
+            />
+            <div className="d-grid gap-2">
+              <Button color="success" className=" mt-4">
+                Register
+              </Button>
+            </div>
+          </FormGroup>
+        </Form>
+      </TopBanner>
+    </>
   );
 }

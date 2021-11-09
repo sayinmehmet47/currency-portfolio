@@ -1,29 +1,82 @@
-import React from "react";
+import Button from "@restart/ui/esm/Button";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import {
+  Card,
+  CardBody,
+  CardSubtitle,
+  CardText,
+  CardTitle,
+  FormGroup,
+  Input,
+  Label,
+} from "reactstrap";
 
 export default function Converter() {
+  const [unselected, setUnselected] = useState(["USD", "EUR", "CHF", "XAU"]);
+  const [rates, setRates] = useState("");
+  const [selected, setSelected] = useState("TRY");
+  const [input, setInput] = useState(0);
+  const keys = ["TRY", "USD", "EUR", "CHF", "XAU"];
+
+  const handleSelect = (e) => {
+    setUnselected(keys.filter((element) => element !== e.target.value));
+    setSelected(e.target.value);
+  };
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
+
+  useEffect(() => {
+    axios
+      .get(`https://api.exchangerate.host/latest?base=${selected}`)
+      .then((res) => {
+        setRates(res.data.rates);
+      });
+  }, [selected, input]);
+
   return (
-    <div className="">
-      <iframe
-        title="converter"
-        height="375"
-        width="197"
-        className="shadow"
-        src="https://ssltools.investing.com/currency-converter/index.php?from=17&to=12&force_lang=1"
-      ></iframe>
-      <br />
-      <table width="297">
-        <tr>
-          <td>
-            <span
-              style={{
-                fontSize: "11px",
-                color: "#333333",
-                textDecoration: "none",
-              }}
-            ></span>
-          </td>
-        </tr>
-      </table>
+    <div className="me-2 ms-1 ">
+      <Card>
+        <CardBody className="d-flex justify-content-center container">
+          <FormGroup>
+            <CardTitle tag="p" className="bg-dark text-light p-2 rounded">
+              EXCHANGE
+            </CardTitle>
+
+            <Input
+              class="form-select mb-2"
+              id="exampleSelect"
+              name="select"
+              type="number"
+              onChange={(e) => handleChange(e)}
+            ></Input>
+
+            <Input
+              class="form-select mt-3"
+              id="exampleSelect"
+              name="select"
+              type="select"
+              onChange={(e) => handleSelect(e)}
+            >
+              <option>TRY</option>
+              <option>USD</option>
+              <option>EUR</option>
+              <option>CHF</option>
+              <option>XAU</option>
+            </Input>
+          </FormGroup>
+          <FormGroup className="mx-5 px-3 d-flex flex-column justify-content-center align-items-center container-fluid">
+            {unselected.map((element) => (
+              <span className="border-bottom px-3">
+                {element}:{Number.parseFloat(rates[element] * input).toFixed(2)}
+              </span>
+            ))}
+          </FormGroup>
+        </CardBody>
+      </Card>
     </div>
   );
 }
