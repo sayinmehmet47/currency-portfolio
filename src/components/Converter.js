@@ -40,7 +40,7 @@ export default function Converter() {
   return (
     <div className="me-2 ms-1 ">
       <Card>
-        <CardBody className="d-flex justify-content-center container">
+        <CardBody className="d-flex justify-content-center">
           <FormGroup>
             <CardTitle tag="p" className="bg-dark text-light p-2 rounded">
               EXCHANGE
@@ -68,7 +68,7 @@ export default function Converter() {
               <option>XAU</option>
             </Input>
           </FormGroup>
-          <FormGroup className="mx-5 px-3 d-flex flex-column justify-content-center align-items-center container-fluid">
+          <FormGroup className=" d-flex flex-column justify-content-center align-items-center container-fluid">
             {unselected.map((element) => (
               <span className="border-bottom px-3">
                 {element}:{Number.parseFloat(rates[element] * input).toFixed(2)}
