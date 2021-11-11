@@ -26,7 +26,7 @@ export const BuyingModal = (props) => {
   const holdedCurrencies = useSelector((state) =>
     state.portfolioData.map((e) => e.acronym)
   );
-  const { buttonLabel, className } = props;
+  const { buttonLabel, className, isChecked } = props;
   const [modal, setModal] = useState(false);
   const [amount, setAmount] = useState("");
   const [error, setError] = useState("");

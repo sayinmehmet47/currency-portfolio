@@ -1,9 +1,16 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, {
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useTable, useSortBy, usePagination } from "react-table";
-import { CSSTransition } from "react-transition-group";
+import { useTable, useSortBy, usePagination, useRowSelect } from "react-table";
+import { Input } from "reactstrap";
 import { updateFromCurrency } from "../store/Actions/currencyActions";
 import { BuyingModal } from "./BuyingModal";
+import { IndeterminateCheckbox } from "./Checkbox";
 import { SellingModal } from "./SellingModal";
 
 export const PortfolioTable = () => {
@@ -16,11 +23,16 @@ export const PortfolioTable = () => {
     dispatch(updateFromCurrency(fromCurrency));
   }, [fromCurrency]);
 
+  const setCurrency = (ancronym) => {
+    setFromCurrency(ancronym);
+  };
+
   const columns = useMemo(
     () => [
       {
         Header: "Acronym",
-        accessor: "acronym", // accessor is the "key" in the data
+        accessor: "acronym",
+        disableSortBy: true,
       },
       {
         Header: "Name",
@@ -51,10 +63,39 @@ export const PortfolioTable = () => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-
     prepareRow,
     page,
-  } = useTable({ columns, data }, useSortBy, usePagination);
+    rows,
+    selectedFlatRows,
+    state: { selectedRowIds },
+  } = useTable(
+    { columns, data },
+    useSortBy,
+    usePagination,
+    useRowSelect,
+    (hooks) => {
+      hooks.visibleColumns.push((columns) => [
+        // Let's make a column for selection
+        {
+          id: "selection",
+          // The header can use the table's getToggleAllRowsSelectedProps method
+          // to render a checkbox
+          Header: ({ getToggleAllRowsSelectedProps }) => (
+            <div>
+              <IndeterminateCheckbox {...getToggleAllRowsSelectedProps()} />
+            </div>
+          ),
+
+          Cell: ({ row }) => (
+            <div>
+              <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+            </div>
+          ),
+        },
+        ...columns,
+      ]);
+    }
+  );
   return (
     <div className="d-flex flex-column mb-5 mt-5 ms-1 me-2 shadow">
       <table {...getTableProps()} style={{ borderRadius: "15px" }}>
@@ -86,7 +127,7 @@ export const PortfolioTable = () => {
             return (
               <tr
                 {...row.getRowProps()}
-                onClick={() => setFromCurrency(row.original.acronym)}
+                onClick={() => setCurrency(row.original.acronym)}
               >
                 {row.cells.map((cell) => {
                   return (
@@ -107,6 +148,20 @@ export const PortfolioTable = () => {
           })}
         </tbody>
       </table>
+      <pre>
+        <code>
+          {JSON.stringify(
+            {
+              selectedRowIds: selectedRowIds,
+              "selectedFlatRows[].original": selectedFlatRows.map(
+                (d) => d.original
+              ),
+            },
+            null,
+            2
+          )}
+        </code>
+      </pre>
     </div>
   );
 };

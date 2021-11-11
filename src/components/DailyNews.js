@@ -18,7 +18,7 @@ export default function DailyNews() {
   const dispatch = useDispatch();
   const news = useSelector((state) => state.currencyNews.news);
   useEffect(() => {
-    dispatch(currencyNews(12));
+    // dispatch(currencyNews(12));
   }, []);
 
   return (
