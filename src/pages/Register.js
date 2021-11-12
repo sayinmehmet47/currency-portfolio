@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import { Alert, Button, Form, FormGroup, Input, Label } from "reactstrap";
 import { register } from "../store/Actions/AuthActions";
 import { TopBanner } from "./Login.elements";
 
 export default function Register() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [error, setError] = useState("");
+
   const handleChangeName = (e) => setName(e.target.value);
   const handleChangeSurname = (e) => setSurname(e.target.value);
+  let navigate = useNavigate();
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -41,7 +42,7 @@ export default function Register() {
     } else {
       dispatch(register(user));
       localStorage.setItem(user.name, JSON.stringify(user));
-      history.push("/");
+      navigate("/");
     }
   };
 

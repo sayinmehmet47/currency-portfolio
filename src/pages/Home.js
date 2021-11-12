@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
 import { AppNavbar } from "../../src/components/AppNavbar";
 import { PurchaseModal } from "../components/PurchaseModal";
 import ReactSearchBox from "react-search-box";
 import { PortfolioTable } from "../components/PortfolioTable";
 import { FcSearch } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
+
 import {
   getPortfolio,
   getTotalAssets,
 } from "../store/Actions/portfolioActions";
 import { Alert } from "reactstrap";
 import { getCurrencies } from "../store/Actions/currencyActions";
+import Mainpage from "./Mainpage";
 
 export default function Home() {
-  const history = useHistory();
+  let navigate = useNavigate();
+
   const dispatch = useDispatch();
   const isLogin = useSelector((state) => state.auth.isLogin);
   const userName = useSelector((state) => state.auth.user.name);
@@ -42,7 +45,7 @@ export default function Home() {
   }, [userName]);
 
   return (
-    <div class="home">
+    <div className="home">
       {isLogin ? (
         <div>
           <AppNavbar />
@@ -69,7 +72,7 @@ export default function Home() {
           <span className="pb-5">{lastUpdated}</span>
         </div>
       ) : (
-        history.push("/mainpage")
+        <Mainpage />
       )}
     </div>
   );

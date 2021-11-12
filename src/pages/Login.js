@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { Alert } from "reactstrap";
 import { login } from "../store/Actions/AuthActions";
 import { TopBanner } from "./Login.elements";
 import Logo from "../images/logo-black.png";
+import { useNavigate } from "react-router";
 
 const Login = (props) => {
   const [logins, setLogins] = useState(false);
   const [attempt, setAttempt] = useState(false);
   const dispatch = useDispatch();
-  const history = useHistory();
+  let navigate = useNavigate();
 
   const [name, setName] = useState("");
   const handleChangeName = (e) => setName(e.target.value);
@@ -21,7 +21,8 @@ const Login = (props) => {
     const user = JSON.parse(localStorage.getItem(name));
     if (user) {
       dispatch(login(user));
-      history.push("/");
+      // history.push("/");
+      navigate("/");
     } else {
       setLogins(false);
       setAttempt(true);
@@ -29,6 +30,7 @@ const Login = (props) => {
         setAttempt(false);
       }, 3000);
       // history.push('/register');
+      navigate("/register");
     }
   };
   return (

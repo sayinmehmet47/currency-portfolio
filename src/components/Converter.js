@@ -47,7 +47,7 @@ export default function Converter() {
             </CardTitle>
 
             <Input
-              class="form-select mb-2"
+              className="form-select mb-2"
               id="exampleSelect"
               name="select"
               type="number"
@@ -55,7 +55,7 @@ export default function Converter() {
             ></Input>
 
             <Input
-              class="form-select mt-3"
+              className="form-select mt-3"
               id="exampleSelect"
               name="select"
               type="select"
@@ -69,8 +69,8 @@ export default function Converter() {
             </Input>
           </FormGroup>
           <FormGroup className=" d-flex flex-column justify-content-center align-items-center container-fluid">
-            {unselected.map((element) => (
-              <span className="border-bottom px-3">
+            {unselected.map((element, index) => (
+              <span key={index} className="border-bottom px-3">
                 {element}:{Number.parseFloat(rates[element] * input).toFixed(2)}
               </span>
             ))}
