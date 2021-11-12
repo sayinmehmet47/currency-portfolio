@@ -4,7 +4,7 @@ const initialState = {
   news: [],
 };
 
-export const currencyNews = (state = initialState, action) => {
+export const newsDaily = (state = initialState, action) => {
   switch (action.type) {
     case CURRENCY_NEWS:
       return { ...state, news: action.payload };

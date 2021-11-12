@@ -72,7 +72,7 @@ export default function Home() {
           <span className="pb-5">{lastUpdated}</span>
         </div>
       ) : (
-        <Mainpage />
+        navigate("/mainpage")
       )}
     </div>
   );

@@ -9,6 +9,7 @@ import { portfolioReducer } from "./Reducers/portfolioReducer";
 import { totalAssetsReducer } from "./Reducers/totalAssetsReducer";
 import { currencyDailyReducer } from "./Reducers/currencyDaily";
 import { currencyNews } from "./Actions/currencyActions";
+import { newsDaily } from "./Reducers/currencyNews";
 
 const reducers = combineReducers({
   auth: authReducer,
@@ -16,7 +17,7 @@ const reducers = combineReducers({
   portfolioData: portfolioReducer,
   totalAssets: totalAssetsReducer,
   currencyDaily: currencyDailyReducer,
-  currencyNews: currencyNews,
+  newsDaily: newsDaily,
 });
 
 const persistConfig = {
