@@ -26,7 +26,9 @@ export const PortfolioTable = () => {
   const setCurrency = (ancronym) => {
     setFromCurrency(ancronym);
   };
-
+  const toggleAllRowsSelected = (e) => {
+    console.log(e);
+  };
   const columns = useMemo(
     () => [
       {
@@ -43,17 +45,23 @@ export const PortfolioTable = () => {
         accessor: (d) => d.totalAsset.toFixed(3),
       },
       {
-        width: 300,
+        width: 100,
         Header: "Trade",
-        Cell: ({ row }) => (
-          <div className="d-flex justify-content-center">
-            <BuyingModal
-              buttonLabel="Buy"
-              selected={[row.original.acronym, row.original.name]}
-            />
-            <SellingModal buttonLabel="Sell" />
-          </div>
-        ),
+        Cell: ({ row }) =>
+          row.isSelected ? (
+            <div className="d-flex justify-content-center">
+              <BuyingModal
+                buttonLabel="Buy"
+                selected={[row.original.acronym, row.original.name]}
+              />
+              <SellingModal buttonLabel="Sell" />
+            </div>
+          ) : (
+            <div>
+              <button className="btn btn-success m-1">Buy</button>
+              <button className="btn btn-danger m-1">Sell</button>
+            </div>
+          ),
       },
     ],
     []
@@ -88,7 +96,10 @@ export const PortfolioTable = () => {
 
           Cell: ({ row }) => (
             <div>
-              <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+              <IndeterminateCheckbox
+                {...row.getToggleRowSelectedProps()}
+                onClick={(e) => toggleAllRowsSelected(e)}
+              />
             </div>
           ),
         },
@@ -97,7 +108,7 @@ export const PortfolioTable = () => {
     }
   );
   return (
-    <div className="d-flex flex-column mb-5 mt-5 ms-1 me-2 shadow">
+    <div className="d-flex flex-column mb-5 mt-5 ms-3 me-4 shadow">
       <table {...getTableProps()} style={{ borderRadius: "15px" }}>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -148,20 +159,6 @@ export const PortfolioTable = () => {
           })}
         </tbody>
       </table>
-      <pre>
-        <code>
-          {JSON.stringify(
-            {
-              selectedRowIds: selectedRowIds,
-              "selectedFlatRows[].original": selectedFlatRows.map(
-                (d) => d.original
-              ),
-            },
-            null,
-            2
-          )}
-        </code>
-      </pre>
     </div>
   );
 };

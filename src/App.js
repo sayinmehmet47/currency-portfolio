@@ -6,7 +6,6 @@ import "./App.css";
 import RouterProvider from "./providers/router";
 function App() {
   const location = useLocation();
-  console.log(location);
   return (
     <div className="App">
       <TransitionGroup>
