@@ -47,3 +47,15 @@ For the stocks data, two APIs\* are used:
 # Modals
 
 ![BuyingModal](https://user-images.githubusercontent.com/75525090/140912471-c965cf7c-5045-4e9a-861a-08f9599f7168.PNG)
+
+```poll
+question: Which of these table is your better to use?
+
+    - React-table
+    - Bootstrap-table
+    - Material-UI table
+    - Rsuite-table.
+
+```
+
+Thanks for voting
