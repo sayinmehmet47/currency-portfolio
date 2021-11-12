@@ -7,6 +7,9 @@ This projects is a mock currency buying/selling platform that allows the user to
 # Technologies Used
 
 The platform uses React.JS as its front-end library, coupled with Bootsrap 5 for the styling,react-router-dom for routing and Redux for state management.
+For transition between routes
+
+- [react-transtion-group](https://reactcommunity.org/react-transition-group/) used for cool transition effect when change the routes
 
 For the stocks data, two APIs\* are used:
 
