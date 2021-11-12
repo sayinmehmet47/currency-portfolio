@@ -11,6 +11,10 @@ For transition between routes
 
 - [react-transtion-group](https://reactcommunity.org/react-transition-group/) used for cool transition effect when change the routes
 
+For table
+
+- [react-table](https://react-table.tanstack.com/) used for handle checked rows on table
+
 For the stocks data, two APIs\* are used:
 
 - [exchangerate](https://exchangerate.host/#/) used for fetching price details for every currency
