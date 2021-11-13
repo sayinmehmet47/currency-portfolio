@@ -1,40 +1,67 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
+import { useSelector } from "react-redux";
 
-const data = {
-  labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-  datasets: [
-    {
-      label: "# of Votes",
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        "rgba(255, 99, 132, 0.2)",
-        "rgba(54, 162, 235, 0.2)",
-        "rgba(255, 206, 86, 0.2)",
-        "rgba(75, 192, 192, 0.2)",
-        "rgba(153, 102, 255, 0.2)",
-        "rgba(255, 159, 64, 0.2)",
-      ],
-      borderColor: [
-        "rgba(255, 99, 132, 1)",
-        "rgba(54, 162, 235, 1)",
-        "rgba(255, 206, 86, 1)",
-        "rgba(75, 192, 192, 1)",
-        "rgba(153, 102, 255, 1)",
-        "rgba(255, 159, 64, 1)",
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
+export default function DoughnutChart() {
+  const portfolioData = useSelector((state) => state.portfolioData);
+  const [rateUSD, setRateUSD] = useState("");
 
-const DoughnutChart = () => (
-  <div style={{ maxWidth: 250 }}>
-    <div className="header">
-      <h1 className="title">Doughnut Chart</h1>
+  useEffect(() => {
+    axios.get(`https://api.exchangerate.host/latest?base=USD`).then((res) => {
+      setRateUSD(res.data.rates);
+    });
+  }, []);
+
+  console.log(portfolioData);
+  console.log(rateUSD);
+  const portfolioToUsd = portfolioData.map((e) => {
+    return Number.parseFloat(e.totalAsset / rateUSD[e.acronym]).toFixed(2);
+  });
+  const data = {
+    datasets: [
+      {
+        label: "# of Votes",
+        data: portfolioToUsd,
+        backgroundColor: [
+          "#1abc9c",
+          "#3498db",
+          "#9b59b6",
+          "#e67e22",
+          "#bdc3c7",
+          "#FD7272",
+          "#BDC581",
+          "#B33771",
+        ],
+        borderColor: [
+          "#1abc9c",
+          "#3498db",
+          "#9b59b6",
+          "#e67e22",
+          "#bdc3c7",
+          "#FD7272",
+          "#BDC581",
+          "#B33771",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+  data.labels = portfolioData.map((e) => e.acronym);
+  console.log(portfolioToUsd);
+  return (
+    <div
+      style={{
+        maxWidth: 250,
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: "20px",
+      }}
+    >
+      <div className="header">
+        <h3 className="title">Portfolio Chart</h3>
+      </div>
+      <Doughnut data={data} />
     </div>
-    <Doughnut data={data} />
-  </div>
-);
-
-export default DoughnutChart;
+  );
+}

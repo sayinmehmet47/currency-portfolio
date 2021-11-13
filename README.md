@@ -7,6 +7,7 @@ This projects is a mock currency buying/selling platform that allows the user to
 # Technologies Used
 
 The platform uses React.JS as its front-end library, coupled with Bootsrap 5 for the styling,react-router-dom for routing and Redux for state management.
+
 For transition between routes
 
 - [react-transtion-group](https://reactcommunity.org/react-transition-group/) used for cool transition effect when change the routes
@@ -14,6 +15,10 @@ For transition between routes
 For table
 
 - [react-table](https://react-table.tanstack.com/) used for handle checked rows on table
+
+For Charts
+
+- [react-charts](hhttps://github.com/reactchartjs/react-chartjs-2) used for create doughnut chart
 
 For the stocks data, two APIs\* are used:
 
@@ -47,3 +52,7 @@ For the stocks data, two APIs\* are used:
 # Modals
 
 ![BuyingModal](https://user-images.githubusercontent.com/75525090/140912471-c965cf7c-5045-4e9a-861a-08f9599f7168.PNG)
+
+# Charts
+
+![image](https://user-images.githubusercontent.com/75525090/141643845-43e7fb27-2af2-4b92-84d1-08af69910ec1.png)

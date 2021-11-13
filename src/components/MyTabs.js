@@ -6,7 +6,7 @@ import { PortfolioTable } from "./PortfolioTable";
 export default function MyTabs(props) {
   const [activeTab, setActiveTab] = useState("1");
   return (
-    <div>
+    <div className="mt-5">
       <Nav tabs>
         <NavItem>
           <NavLink

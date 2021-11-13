@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppNavbar } from "../../src/components/AppNavbar";
 import { PurchaseModal } from "../components/PurchaseModal";
 import ReactSearchBox from "react-search-box";
-import { PortfolioTable } from "../components/PortfolioTable";
 import { FcSearch } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 
@@ -68,8 +67,10 @@ export default function Home() {
             <PurchaseModal selected={selectedCurrency} />
           </div>
           <MyTabs />
-          <span style={{ color: "red" }}>Last Updated: </span>
-          <span className="pb-5">{lastUpdated}</span>
+          <div className="mt-5">
+            <span style={{ color: "red" }}>Last Updated: </span>
+            <span className="pb-5">{lastUpdated}</span>
+          </div>
         </div>
       ) : (
         navigate("/mainpage")
