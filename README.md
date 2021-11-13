@@ -18,7 +18,7 @@ For table
 
 For Charts
 
-- [react-charts](hhttps://github.com/reactchartjs/react-chartjs-2) used for create doughnut chart
+- [react-charts](https://github.com/reactchartjs/react-chartjs-2) used for create doughnut chart
 
 For the stocks data, two APIs\* are used:
 
