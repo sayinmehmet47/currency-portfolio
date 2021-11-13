@@ -13,7 +13,7 @@ import {
 } from "../store/Actions/portfolioActions";
 import { Alert } from "reactstrap";
 import { getCurrencies } from "../store/Actions/currencyActions";
-import Mainpage from "./Mainpage";
+import MyTabs from "../components/MyTabs";
 
 export default function Home() {
   let navigate = useNavigate();
@@ -67,7 +67,7 @@ export default function Home() {
             />{" "}
             <PurchaseModal selected={selectedCurrency} />
           </div>
-          <PortfolioTable />
+          <MyTabs />
           <span style={{ color: "red" }}>Last Updated: </span>
           <span className="pb-5">{lastUpdated}</span>
         </div>

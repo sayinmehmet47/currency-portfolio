@@ -58,8 +58,8 @@ export const PortfolioTable = () => {
             </div>
           ) : (
             <div>
-              <button className="btn btn-success m-1">Buy</button>
-              <button className="btn btn-danger m-1">Sell</button>
+              <button className="btn btn-success mx-2">Buy</button>
+              <button className="btn btn-danger mx-2">Sell</button>
             </div>
           ),
       },

@@ -65,12 +65,6 @@ input.search {
   right: 5px;
 }
 
-.home {
-  background-image: url("./images/background.png");
-  width: 100vw;
-  height: 100vh;
-}
-
 .newBtnSpecial {
   opacity: 0;
   background-image: none;
