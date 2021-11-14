@@ -112,16 +112,6 @@ export const SocialMediaWrap = styled.div`
 
 export const SocialLogo = styled(Link)`
   justify-self: start;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 2rem;
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-  &:hover {
-    color: #0467fb;
-    transition: 0.3s ease-out;
-  }
 `;
 
 export const WebsiteRights = styled.small`
@@ -140,7 +130,7 @@ export const SocialIconLink = styled.a`
   color: #707070;
   font-size: 24px;
   &:hover {
-    border: 2px solid red;
+    border: 1.7px solid #fab1a0;
     transition: 0.1s ease-out;
   }
 `;

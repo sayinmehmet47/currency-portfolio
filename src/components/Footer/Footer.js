@@ -67,7 +67,7 @@ function Footer() {
                 href="https://www.linkedin.com/in/sayinmehmet/"
                 target="_blank"
                 aria-label="Linkedin"
-                className="rounded-circle  px-2 pb-1"
+                className="rounded-circle  px-2 pb-1 glass"
               >
                 <FaLinkedin color="#0a66c2" title="linkedin" />
               </SocialIconLink>
@@ -75,7 +75,7 @@ function Footer() {
                 href="https://github.com/sayinmehmet47"
                 target="_blank"
                 aria-label="Github"
-                className="rounded-circle  px-2 pb-1"
+                className="rounded-circle  px-2 pb-1 glass"
               >
                 <FaGithub color="black" title="github" />
               </SocialIconLink>
@@ -83,7 +83,7 @@ function Footer() {
                 href="https://stackoverflow.com/users/15106423/sayinmehmet47"
                 target="_blank"
                 aria-label="Stackoverflow"
-                className="rounded-circle px-2 pb-1"
+                className="rounded-circle px-2 pb-1 glass"
               >
                 <FaStackOverflow color="#f48024" title="stackoveflow" />
               </SocialIconLink>
