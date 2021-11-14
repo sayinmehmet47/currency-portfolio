@@ -13,8 +13,6 @@ export default function DoughnutChart() {
     });
   }, []);
 
-  console.log(portfolioData);
-  console.log(rateUSD);
   const portfolioToUsd = portfolioData.map((e) => {
     return Number.parseFloat(e.totalAsset / rateUSD[e.acronym]).toFixed(2);
   });
@@ -48,7 +46,6 @@ export default function DoughnutChart() {
     ],
   };
   data.labels = portfolioData.map((e) => e.acronym);
-  console.log(portfolioToUsd);
   return (
     <div
       style={{

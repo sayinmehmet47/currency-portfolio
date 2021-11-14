@@ -13,6 +13,7 @@ import {
 import { Alert } from "reactstrap";
 import { getCurrencies } from "../store/Actions/currencyActions";
 import MyTabs from "../components/MyTabs";
+import SearchingComponent from "../components/SearchingComponent";
 
 export default function Home() {
   let navigate = useNavigate();
@@ -55,16 +56,8 @@ export default function Home() {
           </div>
 
           <div className="w-50 mx-auto mt-5">
-            <ReactSearchBox
-              placeholder="Search for currency"
-              onSelect={handleSelection}
-              leftIcon={<FcSearch />}
-              iconBoxSize="48px"
-              value="Doe"
-              data={data}
-              callback={(/** @type {any} */ record) => console.log(record)}
-            />{" "}
             <PurchaseModal selected={selectedCurrency} />
+            <SearchingComponent selection={(q) => setSelectedCurrency(q)} />
           </div>
           <MyTabs />
           <div className="mt-5">
