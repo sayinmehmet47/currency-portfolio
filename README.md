@@ -47,7 +47,7 @@ For the stocks data, two APIs\* are used:
 
 # Currencies
 
-![currencies](https://user-images.githubusercontent.com/75525090/140912240-9de53538-e55e-4770-b438-8c67b0fb9052.PNG)
+![image](https://user-images.githubusercontent.com/75525090/141678364-6e352b6b-914b-4551-ae37-9641f2c7c4f0.png)
 
 # Modals
 
