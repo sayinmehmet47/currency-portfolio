@@ -16,6 +16,7 @@ import {
 import CardModal from "../components/CardModal";
 import Converter from "../components/Converter";
 import DailyNews from "../components/DailyNews";
+import Footer from "../components/Footer/Footer";
 
 export default function Mainpage() {
   const [collapsed, setCollapsed] = useState(true);
@@ -106,6 +107,7 @@ export default function Mainpage() {
           <Converter />
         </Col>
       </Row>
+      <Footer />
     </div>
   );
 }

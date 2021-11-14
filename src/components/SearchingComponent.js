@@ -5,8 +5,8 @@ import { Lookup } from "react-rainbow-components";
 import { useSelector } from "react-redux";
 
 export default function SearchingComponent({ selection }) {
-  console.log(selection);
   const [state, setState] = useState({ options: null });
+  console.log(state);
 
   useEffect(() => {
     selection(state.option ? state.option.label : null);
@@ -14,7 +14,7 @@ export default function SearchingComponent({ selection }) {
 
   const IconStyles = {
     height: 30,
-    width: 30,
+    width: 50,
     backgroundColor: "#01b6f5",
     borderRadius: 40,
     display: "flex",
@@ -89,6 +89,8 @@ export default function SearchingComponent({ selection }) {
         onSearch={search}
         style={containerStyles}
         className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        isLoading={state.isLoading}
+        size="medium"
       />
     </div>
   );
