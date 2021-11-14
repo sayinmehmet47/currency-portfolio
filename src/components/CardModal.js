@@ -4,15 +4,7 @@ import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import { BsFillArrowDownCircleFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-  Card,
-  CardBody,
-  CardText,
-  CardTitle,
-  Col,
-  Container,
-  Row,
-} from "reactstrap";
+import { Col, Container, Row } from "reactstrap";
 import { dailyCurrency } from "../store/Actions/currencyActions";
 
 export default function CardModal() {

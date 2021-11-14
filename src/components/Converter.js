@@ -1,17 +1,6 @@
-import Button from "@restart/ui/esm/Button";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import {
-  Card,
-  CardBody,
-  CardSubtitle,
-  CardText,
-  CardTitle,
-  FormGroup,
-  Input,
-  Label,
-} from "reactstrap";
+import { Card, CardBody, CardTitle, FormGroup, Input } from "reactstrap";
 
 export default function Converter() {
   const [unselected, setUnselected] = useState(["USD", "EUR", "CHF", "XAU"]);

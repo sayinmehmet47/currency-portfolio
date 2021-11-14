@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppNavbar } from "../../src/components/AppNavbar";
 import { PurchaseModal } from "../components/PurchaseModal";
-import ReactSearchBox from "react-search-box";
-import { FcSearch } from "react-icons/fc";
+
 import { useNavigate } from "react-router-dom";
 
 import {

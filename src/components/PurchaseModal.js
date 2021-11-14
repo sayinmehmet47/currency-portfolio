@@ -5,7 +5,6 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
   Form,
   FormGroup,
   Label,
@@ -13,15 +12,12 @@ import {
   Alert,
 } from "reactstrap";
 import {
-  buyCurrency,
   buyCurrencyFromList,
   clearRate,
   getCurrencyRate,
-  sellCurrency,
   updateFromCurrency,
   updateToCurrency,
 } from "../store/Actions/currencyActions";
-import { getPortfolio } from "../store/Actions/portfolioActions";
 
 export const PurchaseModal = (props) => {
   const dispatch = useDispatch();

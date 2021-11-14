@@ -21,7 +21,6 @@ const Login = (props) => {
     const user = JSON.parse(localStorage.getItem(name));
     if (user) {
       dispatch(login(user));
-      // history.push("/");
       navigate("/");
     } else {
       setLogins(false);
@@ -29,8 +28,6 @@ const Login = (props) => {
       setTimeout(() => {
         setAttempt(false);
       }, 3000);
-      // history.push('/register');
-      navigate("/register");
     }
   };
   return (

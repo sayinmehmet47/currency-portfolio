@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Parallax, Background } from "react-parallax";
 import Image from "../images/moneyNew.jpg";
 import Logo from "../images/newest.png";
 
@@ -10,18 +9,10 @@ import {
   Navbar,
   NavbarBrand,
   NavbarToggler,
-  NavLink,
   NavItem,
-  Badge,
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
   Col,
   Row,
 } from "reactstrap";
-import Button from "@restart/ui/esm/Button";
 import CardModal from "../components/CardModal";
 import Converter from "../components/Converter";
 import DailyNews from "../components/DailyNews";
