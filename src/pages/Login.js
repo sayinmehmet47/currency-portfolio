@@ -8,6 +8,49 @@ import { TopBanner } from "./Login.elements";
 import Logo from "../images/logo-black.png";
 import { useNavigate } from "react-router";
 
+const testAccount = {
+  name: "testAccount",
+  surname: "test",
+  portfolio: [
+    {
+      acronym: "USD",
+      name: "United States Dollar",
+      totalAsset: 713.2519944676928,
+    },
+    {
+      acronym: "TRY",
+      name: "Turkish Lira",
+      totalAsset: 90.14715561989406,
+    },
+    {
+      acronym: "CHF",
+      name: "Swiss Franc",
+      totalAsset: 140,
+    },
+    {
+      acronym: "GEL",
+      name: "Georgian Lari",
+      totalAsset: 200,
+    },
+    {
+      acronym: "GGP",
+      name: "Guernsey Pound",
+      totalAsset: 40,
+    },
+    {
+      acronym: "DKK",
+      name: "Danish Krone",
+      totalAsset: 40,
+    },
+    {
+      acronym: "PHP",
+      name: "Philippine Peso",
+      totalAsset: 80,
+    },
+  ],
+  totalAsset: 1000,
+};
+
 const Login = (props) => {
   const [logins, setLogins] = useState(false);
   const [attempt, setAttempt] = useState(false);
@@ -19,8 +62,13 @@ const Login = (props) => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const user = JSON.parse(localStorage.getItem(name));
+    console.log(user);
     if (user) {
       dispatch(login(user));
+      navigate("/");
+    } else if (name === "testAccount") {
+      localStorage.setItem("testAccount", JSON.stringify(testAccount));
+      dispatch(login(testAccount));
       navigate("/");
     } else {
       setLogins(false);
@@ -58,7 +106,7 @@ const Login = (props) => {
             type="name"
             name="name"
             id="exampleName"
-            placeholder="john"
+            placeholder="login with `testAccount`"
             onChange={handleChangeName}
           />
         </FormGroup>

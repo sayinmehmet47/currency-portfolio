@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 export default function SearchingComponent({ selection }) {
   const [state, setState] = useState({ options: null });
-  console.log(state);
 
   useEffect(() => {
     selection(state.option ? state.option.label : null);

@@ -35,7 +35,7 @@ import {
 
 function Footer() {
   return (
-    <div>
+    <div className="shadow">
       <FooterContainer>
         <FooterSubscription></FooterSubscription>
         <FooterLinksContainer>

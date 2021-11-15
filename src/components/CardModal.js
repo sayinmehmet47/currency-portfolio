@@ -11,7 +11,6 @@ export default function CardModal() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(dailyCurrency());
-    console.log(currencyDaily.USD);
   }, []);
 
   const currencyDaily = useSelector((state) => state.currencyDaily);

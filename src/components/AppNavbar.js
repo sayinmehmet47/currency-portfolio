@@ -23,7 +23,7 @@ export const AppNavbar = () => {
 
   return (
     <div>
-      <Navbar color="dark" dark sticky expand="md" className="mb-5 shadow">
+      <Navbar color="dark" dark expand="md" className="mb-5 shadow">
         <NavbarBrand href="/">
           <img src={logo} alt="fdf" width={50} height={50} />
         </NavbarBrand>
