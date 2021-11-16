@@ -1,29 +1,32 @@
 import Home from "../../pages/Home";
 import Login from "../../pages/Login";
 import Mainpage from "../../pages/Mainpage";
+import NotFound from "../../pages/NotFound";
 import Register from "../../pages/Register";
+import Translation from "../../pages/Translation";
 
 const routes = [
   {
     path: "/",
     component: <Home />,
-    exact: true,
   },
   {
     path: "/login",
     component: <Login />,
-    exact: true,
   },
   {
     path: "/register",
     component: <Register />,
-    exact: true,
   },
   {
     path: "/mainpage",
     component: <Mainpage />,
-    exact: true,
   },
+  {
+    path: "/translate",
+    component: <Translation />,
+  },
+  { path: "*", component: <NotFound /> },
 ];
 
 export default routes;
