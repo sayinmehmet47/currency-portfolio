@@ -15,37 +15,7 @@ const testAccount = {
     {
       acronym: "USD",
       name: "United States Dollar",
-      totalAsset: 713.2519944676928,
-    },
-    {
-      acronym: "TRY",
-      name: "Turkish Lira",
-      totalAsset: 90.14715561989406,
-    },
-    {
-      acronym: "CHF",
-      name: "Swiss Franc",
-      totalAsset: 140,
-    },
-    {
-      acronym: "GEL",
-      name: "Georgian Lari",
-      totalAsset: 200,
-    },
-    {
-      acronym: "GGP",
-      name: "Guernsey Pound",
-      totalAsset: 40,
-    },
-    {
-      acronym: "DKK",
-      name: "Danish Krone",
-      totalAsset: 40,
-    },
-    {
-      acronym: "PHP",
-      name: "Philippine Peso",
-      totalAsset: 80,
+      totalAsset: 1000,
     },
   ],
   totalAsset: 1000,
