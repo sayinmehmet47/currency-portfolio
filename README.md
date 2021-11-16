@@ -2,7 +2,7 @@ https://currency-portfolio.netlify.app/
 
 # Stock Portfolio Project
 
-This projects is a mock currency buying/selling platform that allows the user to use their funds to buy currenct and then sell them whenever they feel like it.
+This projects is a mock currency buying/selling platform that allows the user to use their funds to buy currency and then sell them whenever they feel like it.
 
 # Technologies Used
 
