@@ -13,10 +13,11 @@ import { Alert } from "reactstrap";
 import { getCurrencies } from "../store/Actions/currencyActions";
 import MyTabs from "../components/MyTabs";
 import SearchingComponent from "../components/SearchingComponent";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
   let navigate = useNavigate();
-
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const isLogin = useSelector((state) => state.auth.isLogin);
   const userName = useSelector((state) => state.auth.user.name);
@@ -51,7 +52,9 @@ export default function Home() {
           {error ? <Alert color="warning">{error}</Alert> : ""}
 
           <div className="d-flex justify-content-center align-items-center">
-            <h2>TotalAssets:{totalAssets}$</h2>
+            <h2>
+              {t("totalAssets")}:{totalAssets}$
+            </h2>
           </div>
 
           <div className="w-50 mx-auto mt-5">
@@ -60,7 +63,7 @@ export default function Home() {
           </div>
           <MyTabs />
           <div className="mt-5">
-            <span style={{ color: "red" }}>Last Updated: </span>
+            <span style={{ color: "red" }}>{t("lastUpdated")}: </span>
             <span className="pb-5">{lastUpdated}</span>
           </div>
         </div>

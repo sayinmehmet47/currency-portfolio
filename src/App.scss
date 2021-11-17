@@ -60,7 +60,7 @@ input.search {
   padding-bottom: 20%;
 }
 .parallax-inner-2 {
-  margin-left: auto;
+  margin-left: 37%;
   margin-right: auto;
   margin-top: 20%;
 }
@@ -126,3 +126,6 @@ input.search {
   opacity: 0;
   transition: opacity 200ms;
 }
+
+// Import Bootstrap and its default variables
+@import "~bootstrap/scss/bootstrap.scss";

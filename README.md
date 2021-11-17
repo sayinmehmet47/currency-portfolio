@@ -1,5 +1,3 @@
-
-
 # Stock Portfolio Project
 
 This projects is a mock currency buying/selling platform that allows the user to use their funds to buy currency and then sell them whenever they feel like it.
@@ -26,6 +24,10 @@ For the stocks data, two APIs\* are used:
 - [ExchangeRate](https://www.exchangerate-api.com/) used for fetching price details for every currency.
 - [Turuncgil](https://finans.truncgil.com/v3/today.json) used for fetching price details for every currency.
 - [CNBC](https://cnbc.p.rapidapi.com/news/) used for fetching last news about finance,economy
+
+For translation home page,
+
+- [i18next-scanner](https://i18next.github.io/i18next-scanner/) used for translation from English to Deutsch
 
 # MainPage
 
@@ -56,3 +58,7 @@ For the stocks data, two APIs\* are used:
 # Charts
 
 ![image](https://user-images.githubusercontent.com/75525090/141643845-43e7fb27-2af2-4b92-84d1-08af69910ec1.png)
+
+# Translate the Page
+
+![image](https://user-images.githubusercontent.com/75525090/142255428-eebb99d4-14b0-486f-9f5d-2ba516e819c7.png)

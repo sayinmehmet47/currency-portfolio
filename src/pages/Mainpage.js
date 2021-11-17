@@ -17,10 +17,10 @@ import CardModal from "../components/CardModal";
 import Converter from "../components/Converter";
 import DailyNews from "../components/DailyNews";
 import Footer from "../components/Footer/Footer";
+import { LanguageSelector } from "../components/languageSelector";
 
 export default function Mainpage() {
   const [collapsed, setCollapsed] = useState(true);
-
   const toggleNavbar = () => setCollapsed(!collapsed);
   return (
     <div>
@@ -32,7 +32,7 @@ export default function Mainpage() {
             style={{
               position: "absolute",
               marginTop: "55px",
-              marginLeft: "37%",
+              marginLeft: "36%",
             }}
           >
             SIGN - IN
@@ -49,7 +49,7 @@ export default function Mainpage() {
             REGISTER
           </Link>
         </div>
-        <div className="parallax-inner-2 text-center">
+        <div className="parallax-inner-2 ">
           <h1>Trade on MT-BANK</h1>
         </div>
         <img
@@ -70,6 +70,7 @@ export default function Mainpage() {
             <NavbarBrand className="me-auto" href="/">
               <img src={Logo} alt="fdf" width={50} height={50} />
             </NavbarBrand>
+
             <NavbarToggler onClick={toggleNavbar} className="me-2" />
             <Collapse navbar isOpen={!collapsed}>
               <Nav navbar>
@@ -96,6 +97,8 @@ export default function Mainpage() {
         <img src={Image} className="img-fluid " alt="bank-pic"></img>
         <h2 className="text-light bg-dark">Trade on MT-BANK</h2>
       </div>
+      <h2 className="TrendingNow-heading mt-5">Currency Rates</h2>
+
       <CardModal />
       <Row lg={2} md={1} sm={1}>
         <Col lg="9">

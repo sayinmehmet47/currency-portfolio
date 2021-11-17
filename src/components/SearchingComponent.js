@@ -1,12 +1,13 @@
 import { faMoneyBill } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Lookup } from "react-rainbow-components";
 import { useSelector } from "react-redux";
 
 export default function SearchingComponent({ selection }) {
   const [state, setState] = useState({ options: null });
-
+  const { t } = useTranslation();
   useEffect(() => {
     selection(state.option ? state.option.label : null);
   }, [state]);
@@ -80,7 +81,7 @@ export default function SearchingComponent({ selection }) {
     <div>
       <Lookup
         id="lookup-1"
-        label="Buy Currency"
+        label={t("buyCurrency")}
         placeholder="TRY"
         options={state.options}
         value={state.option}

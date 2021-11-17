@@ -1,0 +1,20 @@
+{
+  "totalAssets": "Gesamtvermögen",
+  "buyCurrency": "Währung kaufen",
+  "table": "Tish",
+  "charts": "Charts",
+  "acronmym": "Akronym",
+  "name": "Name",
+  "trade": "Handel",
+  "buy": "Besorgern",
+  "sell": "Verkaufen",
+  "lastUpdated": "Letzte Aktualisierung",
+  "portfolioChart": "Portfoliodiagramm",
+  "exchange": "Austausch",
+  "amount": "Betragen",
+  "welcome": "Willkommen",
+  "rate": "Rate",
+  "logout": "Ausloggen",
+  "pleaseEnterAmount": "Bitte geben Sie einen Betrag ein",
+  "pleaseSelectCurrency": "Bitte wählen Sie eine Währung"
+}

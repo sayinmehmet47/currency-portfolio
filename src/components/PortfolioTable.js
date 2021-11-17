@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useTable, useSortBy, usePagination, useRowSelect } from "react-table";
 import { Input } from "reactstrap";
@@ -15,9 +16,12 @@ import { SellingModal } from "./SellingModal";
 
 export const PortfolioTable = () => {
   const portfolio = useSelector((state) => state.portfolioData);
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [fromCurrency, setFromCurrency] = useState("");
   const data = useMemo(() => [...portfolio], [portfolio]);
+  // const Acronym = t("acronym");
+  // const Amount = t("amount");
 
   useEffect(() => {
     dispatch(updateFromCurrency(fromCurrency));
@@ -41,12 +45,12 @@ export const PortfolioTable = () => {
         accessor: "name",
       },
       {
-        Header: "Amount",
+        Header: t("amount"),
         accessor: (d) => d.totalAsset.toFixed(3),
       },
       {
         width: 100,
-        Header: "Trade",
+        Header: t("trade"),
         Cell: ({ row }) =>
           row.isSelected ? (
             <div className="d-flex justify-content-center">
@@ -58,13 +62,13 @@ export const PortfolioTable = () => {
             </div>
           ) : (
             <div>
-              <button className="btn btn-success mx-2">Buy</button>
-              <button className="btn btn-danger mx-2">Sell</button>
+              <button className="btn btn-success mx-1">{t("buy")}</button>
+              <button className="btn btn-danger mx-1">{t("sell")}</button>
             </div>
           ),
       },
     ],
-    []
+    [t]
   );
 
   const {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
@@ -21,6 +22,7 @@ import {
 
 export const PurchaseModal = (props) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const fromCurrency = useSelector((state) => state.codes.fromCurrency);
   const toCurrency = useSelector((state) => state.codes.toCurrency);
   const currentRate = useSelector((state) => state.codes.rates);

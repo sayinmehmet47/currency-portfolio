@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
@@ -30,17 +31,18 @@ export const BuyingModal = (props) => {
   const [modal, setModal] = useState(false);
   const [amount, setAmount] = useState("");
   const [error, setError] = useState("");
+  const { t } = useTranslation();
 
   const toggle = () => {
     setModal(!modal);
     if (!amount) {
-      setError("please enter an amount");
+      setError(t("pleaseEnterAmount"));
       setModal(true);
       setTimeout(() => {
         setError("");
       }, 5000);
     } else if (!currentRate) {
-      setError("please select a currency");
+      setError(t("pleaseSelectCurrency"));
       setModal(true);
       setTimeout(() => {
         setError("");
@@ -81,7 +83,7 @@ export const BuyingModal = (props) => {
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         {error ? <Alert color="warning">{error}</Alert> : null}
-        <h3 className="text-center bg-success py-1 text-light">Buy</h3>
+        <h3 className="text-center bg-success py-1 text-light">{t("buy")}</h3>
 
         <ModalHeader toggle={closeModal}>
           <div className="d-flex">
@@ -110,7 +112,7 @@ export const BuyingModal = (props) => {
           <Form onSubmit={handleSubmit}>
             <FormGroup className="d-flex align-items-center">
               <Label for="exampleEmail" className="me-2">
-                Amount
+                {t("amount")}
               </Label>
               <Input
                 type="text"
@@ -126,7 +128,7 @@ export const BuyingModal = (props) => {
               className="mt-3"
               onClick={toggle}
             >
-              Exchange
+              {t("exchange")}
             </Button>{" "}
           </Form>
         </ModalBody>

@@ -1,0 +1,20 @@
+{
+  "totalAssets": "Total Assets",
+  "buyCurrency": "Buy Currency",
+  "table": "Table",
+  "charts": "Charts",
+  "acronym": "Acronym",
+  "name": "Name",
+  "trade": "Trade",
+  "buy": "Buy",
+  "sell": "Sell",
+  "lastUpdated": "Last Updated",
+  "portfolioChart": "Portfolio Chart",
+  "exchange": "Exchange",
+  "amount": "Amount",
+  "rate": "Rate",
+  "welcome": "Welcome",
+  "logout": "Logout",
+  "pleaseEnterAmount": "Please enter an amount",
+  "pleaseSelectCurrency": "Please select a currency"
+}

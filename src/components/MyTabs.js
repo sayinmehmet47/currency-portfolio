@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Nav, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
 import DoughnutChart from "./Doughnut";
 import { PortfolioTable } from "./PortfolioTable";
 
 export default function MyTabs(props) {
   const [activeTab, setActiveTab] = useState("1");
+  const { t } = useTranslation();
+
   return (
     <div className="mt-5">
       <Nav tabs>
@@ -14,7 +17,7 @@ export default function MyTabs(props) {
             onClick={() => setActiveTab("1")}
             style={{ cursor: "pointer" }}
           >
-            Table
+            {t("table")}
           </NavLink>
         </NavItem>
         <NavItem>
@@ -23,7 +26,7 @@ export default function MyTabs(props) {
             onClick={() => setActiveTab("2")}
             style={{ cursor: "pointer" }}
           >
-            Charts
+            {t("charts")}
           </NavLink>
         </NavItem>
       </Nav>

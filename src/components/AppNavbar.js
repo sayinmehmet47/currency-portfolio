@@ -13,10 +13,14 @@ import {
   NavLink,
 } from "reactstrap";
 import { logout } from "../store/Actions/AuthActions";
+import { LanguageSelector } from "./languageSelector";
+import { useTranslation } from "react-i18next";
 
 export const AppNavbar = () => {
   const [collapsed, setCollapsed] = useState(true);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+
   const userName = useSelector((state) => state.auth.user.name);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
@@ -37,15 +41,18 @@ export const AppNavbar = () => {
           <Nav navbar>
             <NavItem className="d-flex align-items-center justify-content-center">
               <CgProfile color="white" />
-              <NavLink href="#">{`welcome ${userName}`}</NavLink>{" "}
+              <NavLink href="#">{`${t("welcome")} ${userName}`}</NavLink>{" "}
+            </NavItem>{" "}
+            <NavItem className="d-flex align-items-center justify-content-center">
+              <LanguageSelector />
             </NavItem>{" "}
             <NavItem>
               <NavLink
                 style={{ cursor: "pointer" }}
-                className="d-flex align-items-center justify-content-center ms-4 rounded"
+                className="d-flex align-items-center justify-content-center ms-4 rounded mt-1"
                 onClick={() => dispatch(logout())}
               >
-                Logout
+                {t("logout")}
               </NavLink>{" "}
             </NavItem>{" "}
           </Nav>
