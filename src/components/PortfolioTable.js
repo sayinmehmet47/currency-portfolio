@@ -55,10 +55,10 @@ export const PortfolioTable = () => {
           row.isSelected ? (
             <div className="d-flex justify-content-center">
               <BuyingModal
-                buttonLabel="Buy"
+                buttonLabel={t("buy")}
                 selected={[row.original.acronym, row.original.name]}
               />
-              <SellingModal buttonLabel="Sell" />
+              <SellingModal buttonLabel={t("sell")} />
             </div>
           ) : (
             <div>

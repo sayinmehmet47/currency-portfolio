@@ -46,13 +46,13 @@ export const PurchaseModal = (props) => {
   const toggle = () => {
     setModal(!modal);
     if (!amount) {
-      setError("please enter an amount");
+      setError(t("pleaseEnterAmount"));
       setModal(true);
       setTimeout(() => {
         setError("");
       }, 5000);
     } else if (!currentRate) {
-      setError("please select a currency");
+      setError(t("pleaseSelectCurrency"));
       setModal(true);
       setTimeout(() => {
         setError("");
@@ -90,6 +90,7 @@ export const PurchaseModal = (props) => {
     <div className="mx-2">
       <Modal isOpen={modal} className={className}>
         {error ? <Alert color="warning">{error}</Alert> : null}
+        <h3 className="text-center bg-success py-1 text-light">{t("buy")}</h3>
 
         <ModalHeader toggle={closeModal}>
           <div className="d-flex">
@@ -118,7 +119,7 @@ export const PurchaseModal = (props) => {
           <Form onSubmit={handleSubmit}>
             <FormGroup className="d-flex align-items-center">
               <Label for="exampleEmail" className="me-2">
-                Amount
+                {t("amount")}
               </Label>
               <Input
                 type="text"
@@ -134,7 +135,7 @@ export const PurchaseModal = (props) => {
               color="primary"
               className="mt-3"
             >
-              Exchange
+              {t("exchange")}
             </Button>{" "}
           </Form>
         </ModalBody>

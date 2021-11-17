@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
@@ -20,6 +21,7 @@ import {
 
 export const SellingModal = (props) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const fromCurrency = useSelector((state) => state.codes.fromCurrency);
   const toCurrency = useSelector((state) => state.codes.toCurrency);
   const currentRate = useSelector((state) => state.codes.rates);
@@ -35,13 +37,13 @@ export const SellingModal = (props) => {
   const toggle = () => {
     setModal(!modal);
     if (!amount) {
-      setError("please enter an amount");
+      setError(t("pleaseEnterAmount"));
       setModal(true);
       setTimeout(() => {
         setError("");
       }, 5000);
     } else if (!currentRate) {
-      setError("please select a currency");
+      setError(t("pleaseSelectCurrency"));
       setModal(true);
       setTimeout(() => {
         setError("");
@@ -76,7 +78,7 @@ export const SellingModal = (props) => {
       <Modal isOpen={modal} toggle={toggle} className={className}>
         {error ? <Alert color="warning">{error}</Alert> : null}
 
-        <h3 className="text-center bg-danger text-light py-2">Sell</h3>
+        <h3 className="text-center bg-danger text-light py-2">{t("sell")}</h3>
         <div className="d-flex">
           {holdedCurrencies.map((acronym, index) => {
             return (
@@ -107,7 +109,7 @@ export const SellingModal = (props) => {
           <Form onSubmit={handleSubmit}>
             <FormGroup className="d-flex align-items-center">
               <Label for="exampleEmail" className="me-2">
-                Amount
+                {t("amount")}
               </Label>
               <Input
                 type="text"
@@ -123,7 +125,7 @@ export const SellingModal = (props) => {
               className="mt-3"
               onClick={toggle}
             >
-              Exchange
+              {t("exchange")}
             </Button>{" "}
           </Form>
         </ModalBody>
