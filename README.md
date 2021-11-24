@@ -1,6 +1,8 @@
 # Stock Portfolio Project
 
-This projects is a mock currency buying/selling platform that allows the user to use their funds to buy currency and then sell them whenever they feel like it.
+- This project has been developed to create a personal currency portfolio. The user can trade on the current exchange rate and can easily follow his personal portfolio on the chart.
+- In addition, the customer can follow up-to-date prominent economic news and exchange instant exchange rates without logging in to the page.
+- After logging in to the page, the customer can trade in the language they want with German or English language options.
 
 # Technologies Used
  - [x] ReactJS
