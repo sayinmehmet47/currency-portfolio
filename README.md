@@ -4,10 +4,13 @@ This projects is a mock currency buying/selling platform that allows the user to
 
 # Technologies Used
  - [x] ReactJS
+ - [x] REDUX 
  - [x] Bootsrap 5
  - [x] Styled Components
  - [x] React-Router-Dom
- - [x] REDUX 
+ - [x] Local Storage
+ 
+
  
 
 For transition between routes
