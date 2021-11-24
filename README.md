@@ -3,8 +3,12 @@
 This projects is a mock currency buying/selling platform that allows the user to use their funds to buy currency and then sell them whenever they feel like it.
 
 # Technologies Used
-
-The platform uses React.JS as its front-end library, coupled with Bootsrap 5 for the styling,react-router-dom for routing and Redux for state management.
+ - [x] ReactJS
+ - [x] Bootsrap 5
+ - [x] Styled Components
+ - [x] React-Router-Dom
+ - [x] REDUX 
+ 
 
 For transition between routes
 
