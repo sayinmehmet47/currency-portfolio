@@ -25,7 +25,7 @@ For Charts
 
 - [react-charts](https://github.com/reactchartjs/react-chartjs-2) used for create doughnut chart
 
-For the stocks data, two APIs\* are used:
+For the stocks data, these API are used:
 
 - [exchangerate](https://exchangerate.host/#/) used for fetching price details for every currency
 - [ExchangeRate](https://www.exchangerate-api.com/) used for fetching price details for every currency.
