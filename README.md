@@ -1,10 +1,19 @@
 # Stock Portfolio Project
 
-This projects is a mock currency buying/selling platform that allows the user to use their funds to buy currency and then sell them whenever they feel like it.
+- This project has been developed to create a personal currency portfolio. The user can trade on the current exchange rate and can easily follow his personal portfolio on the chart.
+- In addition, users can follow up-to-date prominent economic news and exchange instant exchange rates without logging in to the page.
+- After logging in to the page, the users can trade in the language they want with German or English language options.
 
 # Technologies Used
+ - [x] ReactJS
+ - [x] REDUX 
+ - [x] Bootsrap 5
+ - [x] Styled Components
+ - [x] React-Router-Dom
+ - [x] Local Storage
+ 
 
-The platform uses React.JS as its front-end library, coupled with Bootsrap 5 for the styling,react-router-dom for routing and Redux for state management.
+ 
 
 For transition between routes
 
@@ -18,7 +27,7 @@ For Charts
 
 - [react-charts](https://github.com/reactchartjs/react-chartjs-2) used for create doughnut chart
 
-For the stocks data, two APIs\* are used:
+For the stocks data, these API are used:
 
 - [exchangerate](https://exchangerate.host/#/) used for fetching price details for every currency
 - [ExchangeRate](https://www.exchangerate-api.com/) used for fetching price details for every currency.
