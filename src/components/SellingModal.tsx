@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Button,
   Modal,
@@ -11,42 +11,45 @@ import {
   Label,
   Input,
   Alert,
-} from "reactstrap";
+} from 'reactstrap';
 import {
   clearRate,
   getCurrencyRate,
   sellCurrency,
   updateToCurrency,
-} from "../store/Actions/currencyActions";
+} from '../store/Actions/currencyActions';
+import { RootState } from '../store/store';
 
-export const SellingModal = (props) => {
+export const SellingModal = (props: any) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const fromCurrency = useSelector((state) => state.codes.fromCurrency);
-  const toCurrency = useSelector((state) => state.codes.toCurrency);
-  const currentRate = useSelector((state) => state.codes.rates);
+  const fromCurrency = useSelector(
+    (state: RootState) => state.codes.fromCurrency
+  );
+  const toCurrency = useSelector((state: RootState) => state.codes.toCurrency);
+  const currentRate = useSelector((state: RootState) => state.codes.rates);
 
-  const holdedCurrencies = useSelector((state) =>
+  const holdedCurrencies = useSelector((state: RootState) =>
     state.portfolioData.map((e) => e.acronym)
   );
   const { buttonLabel, className } = props;
   const [modal, setModal] = useState(false);
-  const [amount, setAmount] = useState("");
-  const [error, setError] = useState("");
+  const [amount, setAmount] = useState('');
+  const [error, setError] = useState('');
 
   const toggle = () => {
     setModal(!modal);
     if (!amount) {
-      setError(t("pleaseEnterAmount"));
+      setError(t('pleaseEnterAmount'));
       setModal(true);
       setTimeout(() => {
-        setError("");
+        setError('');
       }, 5000);
     } else if (!currentRate) {
-      setError(t("pleaseSelectCurrency"));
+      setError(t('pleaseSelectCurrency'));
       setModal(true);
       setTimeout(() => {
-        setError("");
+        setError('');
       }, 2000);
     } else {
       if (amount && currentRate) {
@@ -55,18 +58,18 @@ export const SellingModal = (props) => {
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (amount && currentRate && currentRate !== 1) {
       dispatch(sellCurrency(JSON.parse(amount)));
     }
   };
 
-  const handleUpdateToCurrency = (acronym) => {
+  const handleUpdateToCurrency = (acronym: any) => {
     dispatch(updateToCurrency(acronym));
     dispatch(getCurrencyRate());
   };
@@ -78,7 +81,7 @@ export const SellingModal = (props) => {
       <Modal isOpen={modal} toggle={toggle} className={className}>
         {error ? <Alert color="warning">{error}</Alert> : null}
 
-        <h3 className="text-center bg-danger text-light py-2">{t("sell")}</h3>
+        <h3 className="text-center bg-danger text-light py-2">{t('sell')}</h3>
         <div className="d-flex">
           {holdedCurrencies.map((acronym, index) => {
             return (
@@ -109,7 +112,7 @@ export const SellingModal = (props) => {
           <Form onSubmit={handleSubmit}>
             <FormGroup className="d-flex align-items-center">
               <Label for="exampleEmail" className="me-2">
-                {t("amount")}
+                {t('amount')}
               </Label>
               <Input
                 type="text"
@@ -125,8 +128,8 @@ export const SellingModal = (props) => {
               className="mt-3"
               onClick={toggle}
             >
-              {t("exchange")}
-            </Button>{" "}
+              {t('exchange')}
+            </Button>{' '}
           </Form>
         </ModalBody>
       </Modal>
