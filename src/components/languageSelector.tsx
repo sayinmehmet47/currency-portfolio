@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Form, FormGroup, Input } from "reactstrap";
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Form, FormGroup, Input } from 'reactstrap';
 
 export const LanguageSelector = () => {
   const { i18n } = useTranslation();
 
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState('');
 
-  const onChangeSelection = (e) => {
+  const onChangeSelection = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(e.target.value);
   };
 
