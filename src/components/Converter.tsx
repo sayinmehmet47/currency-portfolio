@@ -1,21 +1,21 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Card, CardBody, CardTitle, FormGroup, Input } from 'reactstrap';
 
 export default function Converter() {
   const [unselected, setUnselected] = useState(['USD', 'EUR', 'CHF', 'XAU']);
-  const [rates, setRates] = useState('');
+  const [rates, setRates] = useState<any>([]);
   const [selected, setSelected] = useState('TRY');
   const [input, setInput] = useState(0);
   const keys = ['TRY', 'USD', 'EUR', 'CHF', 'XAU'];
 
-  const handleSelect = (e) => {
+  const handleSelect = (e: ChangeEvent<HTMLInputElement>) => {
     setUnselected(keys.filter((element) => element !== e.target.value));
     setSelected(e.target.value);
   };
 
-  const handleChange = (e) => {
-    setInput(e.target.value);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInput(Number(e.target.value));
   };
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export default function Converter() {
           <FormGroup className=" d-flex flex-column justify-content-center align-items-center container-fluid">
             {unselected.map((element, index) => (
               <span key={index} className="border-bottom px-3">
-                {element}:{Number.parseFloat(rates[element] * input).toFixed(2)}
+                {element}:{(rates[element] * input).toFixed(2)}
               </span>
             ))}
           </FormGroup>

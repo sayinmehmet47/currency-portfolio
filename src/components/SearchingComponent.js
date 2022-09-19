@@ -1,13 +1,14 @@
-import { faMoneyBill } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Lookup } from "react-rainbow-components";
-import { useSelector } from "react-redux";
+import { faMoneyBill } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useTranslation } from 'react-i18next';
+import { Lookup } from 'react-rainbow-components';
+import { useSelector } from 'react-redux';
 
 export default function SearchingComponent({ selection }) {
   const [state, setState] = useState({ options: null });
   const { t } = useTranslation();
+
   useEffect(() => {
     selection(state.option ? state.option.label : null);
   }, [state]);
@@ -15,12 +16,12 @@ export default function SearchingComponent({ selection }) {
   const IconStyles = {
     height: 30,
     width: 50,
-    backgroundColor: "#01b6f5",
+    backgroundColor: '#01b6f5',
     borderRadius: 40,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "white",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'white',
   };
   const containerStyles = {
     maxWidth: 700,
@@ -32,8 +33,8 @@ export default function SearchingComponent({ selection }) {
         description: `${e[0]}-${e[1]}`,
         icon: (
           <span style={IconStyles}>
-            {" "}
-            <FontAwesomeIcon icon={faMoneyBill} />{" "}
+            {' '}
+            <FontAwesomeIcon icon={faMoneyBill} />{' '}
           </span>
         ),
       };
@@ -43,7 +44,7 @@ export default function SearchingComponent({ selection }) {
   function filter(query, options) {
     if (query) {
       return options.filter((item) => {
-        const regex = new RegExp(query, "i");
+        const regex = new RegExp(query, 'i');
         return regex.test(item.label);
       });
     }
@@ -72,7 +73,7 @@ export default function SearchingComponent({ selection }) {
     } else {
       setState({
         isLoading: false,
-        value: "",
+        value: '',
         options: null,
       });
     }
@@ -81,7 +82,7 @@ export default function SearchingComponent({ selection }) {
     <div>
       <Lookup
         id="lookup-1"
-        label={t("buyCurrency")}
+        label={t('buyCurrency')}
         placeholder="TRY"
         options={state.options}
         value={state.option}
