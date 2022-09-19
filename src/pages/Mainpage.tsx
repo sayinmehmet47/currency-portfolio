@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import Image from "../images/moneyNew.jpg";
-import Logo from "../images/newest.png";
+import React, { useState } from 'react';
+import Image from '../images/moneyNew.jpg';
+import Logo from '../images/newest.png';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Nav,
@@ -12,12 +12,12 @@ import {
   NavItem,
   Col,
   Row,
-} from "reactstrap";
-import CardModal from "../components/CardModal";
-import Converter from "../components/Converter";
-import DailyNews from "../components/DailyNews";
-import Footer from "../components/Footer/Footer";
-import { LanguageSelector } from "../components/languageSelector";
+} from 'reactstrap';
+
+import CardModal from '../components/CardModal';
+import Converter from '../components/Converter';
+import DailyNews from '../components/DailyNews';
+import Footer from '../components/Footer/Footer';
 
 export default function Mainpage() {
   const [collapsed, setCollapsed] = useState(true);
@@ -30,9 +30,9 @@ export default function Mainpage() {
             to="/login"
             className="btn btn-primary px-5"
             style={{
-              position: "absolute",
-              marginTop: "55px",
-              marginLeft: "36%",
+              position: 'absolute',
+              marginTop: '55px',
+              marginLeft: '36%',
             }}
           >
             SIGN - IN
@@ -41,9 +41,9 @@ export default function Mainpage() {
             to="/register"
             className="btn btn-success px-5 "
             style={{
-              position: "absolute",
-              marginTop: "55px",
-              marginLeft: "50%",
+              position: 'absolute',
+              marginTop: '55px',
+              marginLeft: '50%',
             }}
           >
             REGISTER
@@ -54,7 +54,7 @@ export default function Mainpage() {
         </div>
         <img
           style={{
-            position: "absolute",
+            position: 'absolute',
           }}
           src={Logo}
           className="m-3"
@@ -102,11 +102,11 @@ export default function Mainpage() {
       <CardModal />
       <Row lg={2} md={1} sm={1}>
         <Col lg="9">
-          {" "}
+          {' '}
           <DailyNews />
         </Col>
         <Col lg="3">
-          {" "}
+          {' '}
           <Converter />
         </Col>
       </Row>

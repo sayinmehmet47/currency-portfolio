@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 import {
   ADD_CURRENCY,
@@ -14,11 +14,11 @@ import {
   SELL_CURRENCY,
   TO_CURRENCY,
   UNSUFFICENT_BALANCE,
-} from "./actions";
+} from './actions';
 export const getCurrencies = () => (dispatch, getState) => {
   const key = process.env.REACT_APP_ACTIVATION_KEY;
 
-  require("dotenv").config();
+  require('dotenv').config();
   dispatch({ type: CURRENCY_LOADING });
   axios.get(`https://v6.exchangerate-api.com/v6/${key}/codes`).then((res) =>
     dispatch({
@@ -33,7 +33,7 @@ export const getCurrencyRate = () => (dispatch, getState) => {
 
   const fromCurrency = getState().codes.fromCurrency;
   const toCurrency = getState().codes.toCurrency;
-  require("dotenv").config();
+  require('dotenv').config();
 
   axios
     .get(`https://v6.exchangerate-api.com/v6/${key}/latest/${fromCurrency}`)
@@ -111,7 +111,7 @@ export const sellCurrency = (input) => (dispatch, getState) => {
   } else {
     dispatch({
       type: UNSUFFICENT_BALANCE,
-      payload: "You dont have enough balance",
+      payload: 'You dont have enough balance',
     });
 
     setTimeout(() => {
@@ -133,7 +133,7 @@ export const buyCurrency = (input) => (dispatch, getState) => {
     portfolio.filter((e) => e.acronym === toCurrency)[0].totalAsset >
     rate * input
   ) {
-    console.log("ok");
+    console.log('ok');
     const newPortfolio = portfolio.map((e) => {
       if (e.acronym === fromCurrency) {
         return { ...e, totalAsset: e.totalAsset + input };
@@ -157,7 +157,7 @@ export const buyCurrency = (input) => (dispatch, getState) => {
   } else {
     dispatch({
       type: UNSUFFICENT_BALANCE,
-      payload: "You dont have enough balance",
+      payload: 'You dont have enough balance',
     });
 
     setTimeout(() => {
@@ -233,7 +233,7 @@ export const buyCurrencyFromList = (input) => (dispatch, getState) => {
   } else {
     dispatch({
       type: UNSUFFICENT_BALANCE,
-      payload: "You dont have enough balance",
+      payload: 'You dont have enough balance',
     });
 
     setTimeout(() => {
@@ -258,9 +258,9 @@ export const currencyNews = (count) => (dispatch, getState) => {
       `https://cnbc.p.rapidapi.com/news/v2/list-trending?tag=Articles&count=${count}`,
       {
         headers: {
-          Authorization: "x-rapidapi-host",
-          "x-rapidapi-key":
-            "b2649b1adbmsh465672d2c1b6ecep1b1b5bjsn85b3127af992",
+          Authorization: 'x-rapidapi-host',
+          'x-rapidapi-key':
+            'b2649b1adbmsh465672d2c1b6ecep1b1b5bjsn85b3127af992',
         },
       }
     )

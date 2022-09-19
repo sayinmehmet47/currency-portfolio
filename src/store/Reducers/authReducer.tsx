@@ -1,16 +1,30 @@
+import { PayloadAction } from '@reduxjs/toolkit';
+import { Reducer } from 'react';
 import {
   LOGIN_SUCCESS,
   USER_LOGOUT,
   USER_REGISTERED,
-} from "../Actions/actions";
+} from '../Actions/actions';
 
-const initialState = {
+interface IAuth {
+  isRegistered: boolean;
+  isLogin: boolean;
+  user: {
+    name: string;
+    surname: string;
+  };
+}
+
+const initialState: IAuth = {
   isRegistered: false,
   isLogin: false,
-  user: { name: "", surname: "" },
+  user: { name: '', surname: '' },
 };
 
-export const authReducer = (state = initialState, action) => {
+export const authReducer = (
+  state = initialState,
+  action: PayloadAction<{ name: string; surname: string }>
+) => {
   switch (action.type) {
     case USER_REGISTERED:
       return {
@@ -22,9 +36,9 @@ export const authReducer = (state = initialState, action) => {
     case USER_LOGOUT:
       return {
         ...state,
-        isLogin: "",
-        isRegistered: "",
-        user: { name: "", surname: "" },
+        isLogin: false,
+        isRegistered: false,
+        user: { name: '', surname: '' },
       };
     case LOGIN_SUCCESS:
       return {

@@ -1,14 +1,24 @@
+import { PayloadAction } from '@reduxjs/toolkit';
 import {
   ADD_CURRENCY,
   BUY_CURRENCY,
   PORTFOLIO_START,
   SELL_CURRENCY,
   USER_LOGOUT,
-} from "../Actions/actions";
+} from '../Actions/actions';
 
-const initialState = [];
+export interface IPortfolio {
+  totalAsset: number;
+  rates: {};
+  acronym: string;
+}
 
-export const portfolioReducer = (state = initialState, action) => {
+const initialState: IPortfolio[] = [];
+
+export const portfolioReducer = (
+  state = initialState,
+  action: PayloadAction<[], any>
+) => {
   switch (action.type) {
     case PORTFOLIO_START:
       return action.payload;

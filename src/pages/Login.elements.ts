@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Back from "../images/background.png";
+import styled from 'styled-components';
+import Back from '../images/background.png';
 
 export const TopBanner = styled.div`
   background-image: url(${Back});

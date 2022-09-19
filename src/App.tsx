@@ -1,9 +1,8 @@
-import React from "react";
-import { useLocation } from "react-router";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { useLocation } from 'react-router';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import "./App.scss";
-import RouterProvider from "./providers/router";
+import './App.scss';
+import RouterProvider from './providers/router';
 function App() {
   const location = useLocation();
   return (

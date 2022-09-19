@@ -1,27 +1,18 @@
-import React, {
-  useEffect,
-  useImperativeHandle,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
-import { useTable, useSortBy, usePagination, useRowSelect } from "react-table";
-import { Input } from "reactstrap";
-import { updateFromCurrency } from "../store/Actions/currencyActions";
-import { BuyingModal } from "./BuyingModal";
-import { IndeterminateCheckbox } from "./Checkbox";
-import { SellingModal } from "./SellingModal";
+import React, { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTable, useSortBy, usePagination, useRowSelect } from 'react-table';
+import { updateFromCurrency } from '../store/Actions/currencyActions';
+import { BuyingModal } from './BuyingModal';
+import { IndeterminateCheckbox } from './Checkbox';
+import { SellingModal } from './SellingModal';
 
 export const PortfolioTable = () => {
   const portfolio = useSelector((state) => state.portfolioData);
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const [fromCurrency, setFromCurrency] = useState("");
+  const [fromCurrency, setFromCurrency] = useState('');
   const data = useMemo(() => [...portfolio], [portfolio]);
-  // const Acronym = t("acronym");
-  // const Amount = t("amount");
 
   useEffect(() => {
     dispatch(updateFromCurrency(fromCurrency));
@@ -36,34 +27,34 @@ export const PortfolioTable = () => {
   const columns = useMemo(
     () => [
       {
-        Header: "Acronym",
-        accessor: "acronym",
+        Header: 'Acronym',
+        accessor: 'acronym',
         disableSortBy: true,
       },
       {
-        Header: "Name",
-        accessor: "name",
+        Header: 'Name',
+        accessor: 'name',
       },
       {
-        Header: t("amount"),
+        Header: t('amount'),
         accessor: (d) => d.totalAsset.toFixed(3),
       },
       {
         width: 100,
-        Header: t("trade"),
+        Header: t('trade'),
         Cell: ({ row }) =>
           row.isSelected ? (
             <div className="d-flex justify-content-center">
               <BuyingModal
-                buttonLabel={t("buy")}
+                buttonLabel={t('buy')}
                 selected={[row.original.acronym, row.original.name]}
               />
-              <SellingModal buttonLabel={t("sell")} />
+              <SellingModal buttonLabel={t('sell')} />
             </div>
           ) : (
             <div>
-              <button className="btn btn-success mx-1">{t("buy")}</button>
-              <button className="btn btn-danger mx-1">{t("sell")}</button>
+              <button className="btn btn-success mx-1">{t('buy')}</button>
+              <button className="btn btn-danger mx-1">{t('sell')}</button>
             </div>
           ),
       },
@@ -89,7 +80,7 @@ export const PortfolioTable = () => {
       hooks.visibleColumns.push((columns) => [
         // Let's make a column for selection
         {
-          id: "selection",
+          id: 'selection',
           // The header can use the table's getToggleAllRowsSelectedProps method
           // to render a checkbox
           Header: ({ getToggleAllRowsSelectedProps }) => (
@@ -113,7 +104,7 @@ export const PortfolioTable = () => {
   );
   return (
     <div className="d-flex flex-column mb-5 mt-5 ms-3 me-4 shadow">
-      <table {...getTableProps()} style={{ borderRadius: "15px" }}>
+      <table {...getTableProps()} style={{ borderRadius: '15px' }}>
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -122,14 +113,14 @@ export const PortfolioTable = () => {
                   {...column.getHeaderProps(column.getSortByToggleProps())}
                   className="border"
                   style={{
-                    background: "#f3f4f6",
-                    color: "black",
-                    paddingLeft: "12px",
+                    background: '#f3f4f6',
+                    color: 'black',
+                    paddingLeft: '12px',
                   }}
                 >
-                  {column.render("Header")}
+                  {column.render('Header')}
                   <span>
-                    {column.isSorted ? (column.isSortedDesc ? "🔽" : "🔼") : ""}
+                    {column.isSorted ? (column.isSortedDesc ? '🔽' : '🔼') : ''}
                   </span>
                 </th>
               ))}
@@ -150,11 +141,11 @@ export const PortfolioTable = () => {
                       {...cell.getCellProps()}
                       className="border py-2 "
                       style={{
-                        textDecorationLine: "none",
-                        paddingLeft: "7px",
+                        textDecorationLine: 'none',
+                        paddingLeft: '7px',
                       }}
                     >
-                      {cell.render("Cell")}
+                      {cell.render('Cell')}
                     </td>
                   );
                 })}

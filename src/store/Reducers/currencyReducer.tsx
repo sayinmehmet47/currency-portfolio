@@ -1,3 +1,4 @@
+import { AnyAction, PayloadAction } from '@reduxjs/toolkit';
 import {
   CLEAR_ERROR,
   CLEAR_RATE,
@@ -7,19 +8,29 @@ import {
   FROM_CURRENCY,
   TO_CURRENCY,
   UNSUFFICENT_BALANCE,
-} from "../Actions/actions";
+} from '../Actions/actions';
 
-const initialState = {
+export interface ICurrency {
+  data: any[];
+  rates: string;
+  fromCurrency: string;
+  toCurrency: string;
+  date: string;
+  loading: boolean;
+  error: string;
+}
+
+const initialState: ICurrency = {
   data: [],
-  rates: "",
-  fromCurrency: "USD",
-  toCurrency: "USD",
-  date: "",
+  rates: '',
+  fromCurrency: 'USD',
+  toCurrency: 'USD',
+  date: '',
   loading: false,
-  error: "",
+  error: '',
 };
 
-export const currencyReducer = (state = initialState, action) => {
+export const currencyReducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case CURRENCY_LOADING:
       return {
@@ -54,7 +65,7 @@ export const currencyReducer = (state = initialState, action) => {
     case CLEAR_RATE:
       return {
         ...state,
-        rates: "",
+        rates: '',
       };
 
     case UNSUFFICENT_BALANCE:
@@ -65,7 +76,7 @@ export const currencyReducer = (state = initialState, action) => {
     case CLEAR_ERROR:
       return {
         ...state,
-        error: "",
+        error: '',
       };
     default:
       return state;

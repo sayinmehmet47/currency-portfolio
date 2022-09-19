@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export const IndeterminateCheckbox = React.forwardRef(
   ({ indeterminate, ...rest }, ref) => {

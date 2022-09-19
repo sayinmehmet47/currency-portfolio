@@ -1,45 +1,46 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { Alert } from "reactstrap";
-import { login } from "../store/Actions/AuthActions";
-import { TopBanner } from "./Login.elements";
-import Logo from "../images/logo-black.png";
-import { useNavigate } from "react-router";
+import React, { ChangeEvent, FormEventHandler, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Alert } from 'reactstrap';
+import { login } from '../store/Actions/AuthActions';
+import { TopBanner } from './Login.elements';
+import Logo from '../images/logo-black.png';
+import { useNavigate } from 'react-router';
 
 const testAccount = {
-  name: "testAccount",
-  surname: "test",
+  name: 'testAccount',
+  surname: 'test',
   portfolio: [
     {
-      acronym: "USD",
-      name: "United States Dollar",
+      acronym: 'USD',
+      name: 'United States Dollar',
       totalAsset: 1000,
     },
   ],
   totalAsset: 1000,
 };
 
-const Login = (props) => {
+const Login = () => {
   const [logins, setLogins] = useState(false);
   const [attempt, setAttempt] = useState(false);
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const handleChangeName = (e) => setName(e.target.value);
-  const handleOnSubmit = (e) => {
+  const [name, setName] = useState('');
+  const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setName(e.target.value);
+  const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const user = JSON.parse(localStorage.getItem(name));
+    const user = JSON.parse(localStorage.getItem(name) || '');
     console.log(user);
     if (user) {
       dispatch(login(user));
-      navigate("/");
-    } else if (name === "testAccount") {
-      localStorage.setItem("testAccount", JSON.stringify(testAccount));
+      navigate('/');
+    } else if (name === 'testAccount') {
+      localStorage.setItem('testAccount', JSON.stringify(testAccount));
       dispatch(login(testAccount));
-      navigate("/");
+      navigate('/');
     } else {
       setLogins(false);
       setAttempt(true);
@@ -52,7 +53,7 @@ const Login = (props) => {
     <TopBanner>
       <img
         src={Logo}
-        style={{ position: "absolute", top: "10px", left: "5px" }}
+        style={{ position: 'absolute', top: '10px', left: '5px' }}
         className="m-3"
         alt="fdf"
         width={80}
@@ -73,7 +74,7 @@ const Login = (props) => {
           </Label>
 
           <Input
-            type="name"
+            type="text"
             name="name"
             id="exampleName"
             placeholder="login with `testAccount`"
@@ -81,7 +82,7 @@ const Login = (props) => {
           />
         </FormGroup>
         <div className="d-grid gap-2">
-          <Button color="success" className=" mt-4">
+          <Button color="success" className=" mt-4" type="submit">
             Login
           </Button>
         </div>

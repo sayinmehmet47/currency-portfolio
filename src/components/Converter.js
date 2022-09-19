@@ -1,13 +1,13 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Card, CardBody, CardTitle, FormGroup, Input } from "reactstrap";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Card, CardBody, CardTitle, FormGroup, Input } from 'reactstrap';
 
 export default function Converter() {
-  const [unselected, setUnselected] = useState(["USD", "EUR", "CHF", "XAU"]);
-  const [rates, setRates] = useState("");
-  const [selected, setSelected] = useState("TRY");
+  const [unselected, setUnselected] = useState(['USD', 'EUR', 'CHF', 'XAU']);
+  const [rates, setRates] = useState('');
+  const [selected, setSelected] = useState('TRY');
   const [input, setInput] = useState(0);
-  const keys = ["TRY", "USD", "EUR", "CHF", "XAU"];
+  const keys = ['TRY', 'USD', 'EUR', 'CHF', 'XAU'];
 
   const handleSelect = (e) => {
     setUnselected(keys.filter((element) => element !== e.target.value));

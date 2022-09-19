@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import React, { ChangeEvent, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Button,
   Modal,
@@ -11,41 +11,48 @@ import {
   Label,
   Input,
   Alert,
-} from "reactstrap";
+} from 'reactstrap';
 import {
   buyCurrency,
   clearRate,
   getCurrencyRate,
   updateToCurrency,
-} from "../store/Actions/currencyActions";
+} from '../store/Actions/currencyActions';
+import { RootState } from '../store/store';
 
-export const BuyingModal = (props) => {
+interface IBuyingProps {
+  buttonLabel: string;
+  className: string;
+}
+
+export const BuyingModal = ({ buttonLabel, className }: IBuyingProps) => {
   const dispatch = useDispatch();
-  const fromCurrency = useSelector((state) => state.codes.fromCurrency);
-  const toCurrency = useSelector((state) => state.codes.toCurrency);
-  const currentRate = useSelector((state) => state.codes.rates);
-  const holdedCurrencies = useSelector((state) =>
+  const fromCurrency = useSelector(
+    (state: RootState) => state.codes.fromCurrency
+  );
+  const toCurrency = useSelector((state: RootState) => state.codes.toCurrency);
+  const currentRate = useSelector((state: RootState) => state.codes.rates);
+  const holdedCurrencies = useSelector((state: RootState) =>
     state.portfolioData.map((e) => e.acronym)
   );
-  const { buttonLabel, className } = props;
   const [modal, setModal] = useState(false);
-  const [amount, setAmount] = useState("");
-  const [error, setError] = useState("");
+  const [amount, setAmount] = useState('');
+  const [error, setError] = useState('');
   const { t } = useTranslation();
 
   const toggle = () => {
     setModal(!modal);
     if (!amount) {
-      setError(t("pleaseEnterAmount"));
+      setError(t('pleaseEnterAmount'));
       setModal(true);
       setTimeout(() => {
-        setError("");
+        setError('');
       }, 5000);
     } else if (!currentRate) {
-      setError(t("pleaseSelectCurrency"));
+      setError(t('pleaseSelectCurrency'));
       setModal(true);
       setTimeout(() => {
-        setError("");
+        setError('');
       }, 2000);
     } else {
       if (amount && currentRate) {
@@ -59,11 +66,11 @@ export const BuyingModal = (props) => {
     dispatch(clearRate());
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setAmount(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (amount && currentRate && currentRate !== 1) {
@@ -71,7 +78,7 @@ export const BuyingModal = (props) => {
     }
   };
 
-  const handleUpdateToCurrency = (acronym) => {
+  const handleUpdateToCurrency = (acronym: string) => {
     dispatch(updateToCurrency(acronym));
     dispatch(getCurrencyRate());
   };
@@ -83,7 +90,7 @@ export const BuyingModal = (props) => {
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         {error ? <Alert color="warning">{error}</Alert> : null}
-        <h3 className="text-center bg-success py-1 text-light">{t("buy")}</h3>
+        <h3 className="text-center bg-success py-1 text-light">{t('buy')}</h3>
 
         <ModalHeader toggle={closeModal}>
           <div className="d-flex">
@@ -112,7 +119,7 @@ export const BuyingModal = (props) => {
           <Form onSubmit={handleSubmit}>
             <FormGroup className="d-flex align-items-center">
               <Label for="exampleEmail" className="me-2">
-                {t("amount")}
+                {t('amount')}
               </Label>
               <Input
                 type="text"
@@ -128,8 +135,8 @@ export const BuyingModal = (props) => {
               className="mt-3"
               onClick={toggle}
             >
-              {t("exchange")}
-            </Button>{" "}
+              {t('exchange')}
+            </Button>{' '}
           </Form>
         </ModalBody>
       </Modal>
