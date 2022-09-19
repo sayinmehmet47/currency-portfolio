@@ -1,22 +1,21 @@
-import Button from "@restart/ui/esm/Button";
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import Button from '@restart/ui/esm/Button';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   Card,
   CardBody,
-  CardGroup,
   CardImg,
   CardSubtitle,
   CardText,
-  CardTitle,
   Row,
-} from "reactstrap";
-import { currencyNews } from "../store/Actions/currencyActions";
+} from 'reactstrap';
+import { currencyNews } from '../store/Actions/currencyActions';
+import { RootState } from '../store/store';
 
 export default function DailyNews() {
   const dispatch = useDispatch();
-  const news = useSelector((state) => state.newsDaily.news);
+  const news = useSelector((state: RootState) => state.newsDaily.news);
   useEffect(() => {
     dispatch(currencyNews(12));
   }, []);

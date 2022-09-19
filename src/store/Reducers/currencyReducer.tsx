@@ -1,4 +1,4 @@
-import { AnyAction, PayloadAction } from '@reduxjs/toolkit';
+import { AnyAction } from '@reduxjs/toolkit';
 import {
   CLEAR_ERROR,
   CLEAR_RATE,
