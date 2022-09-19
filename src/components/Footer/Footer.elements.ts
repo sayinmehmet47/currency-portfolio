@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { FaDice } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { FaDice } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export const FooterContainer = styled.div`
   background-color: #eeeff4;
@@ -24,8 +24,8 @@ export const FooterSubscription = styled.section`
 `;
 
 export const FooterSubHeading = styled.p`
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
   font-size: 14px;
 `;
 
