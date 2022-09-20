@@ -1,19 +1,10 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { Reducer } from 'react';
+import { IAuth } from '../../shared/interfaces';
 import {
   LOGIN_SUCCESS,
   USER_LOGOUT,
   USER_REGISTERED,
 } from '../Actions/actions';
-
-interface IAuth {
-  isRegistered: boolean;
-  isLogin: boolean;
-  user: {
-    name: string;
-    surname: string;
-  };
-}
 
 const initialState: IAuth = {
   isRegistered: false,

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEventHandler, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
@@ -33,7 +33,6 @@ const Login = () => {
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const user = JSON.parse(localStorage.getItem(name) || '');
-    console.log(user);
     if (user) {
       dispatch(login(user));
       navigate('/');

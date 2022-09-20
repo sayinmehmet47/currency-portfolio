@@ -1,4 +1,4 @@
-import { AnyAction, PayloadAction } from '@reduxjs/toolkit';
+import { PayloadAction } from '@reduxjs/toolkit';
 import { CURRENCY_NEWS } from '../Actions/actions';
 
 type OneNews = {

@@ -2,7 +2,6 @@ import { GET_TOTAL, PORTFOLIO_START, USER_LOGOUT } from './actions';
 import axios from 'axios';
 import { Dispatch } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import { IPortfolio } from '../Reducers/portfolioReducer';
 
 export const getPortfolio =
   () => (dispatch: Dispatch, getState: () => RootState) => {

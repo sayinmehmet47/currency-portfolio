@@ -1,4 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
+import { IPortfolio } from '../../shared/interfaces';
 import {
   ADD_CURRENCY,
   BUY_CURRENCY,
@@ -6,12 +7,6 @@ import {
   SELL_CURRENCY,
   USER_LOGOUT,
 } from '../Actions/actions';
-
-export interface IPortfolio {
-  totalAsset: number;
-  rates: {};
-  acronym: string;
-}
 
 const initialState: IPortfolio[] = [];
 
