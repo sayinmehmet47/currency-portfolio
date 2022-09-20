@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppNavbar } from '../components/AppNavbar';
 import { PurchaseModal } from '../components/PurchaseModal';
-
-import { useNavigate } from 'react-router-dom';
 
 import {
   getPortfolio,
@@ -18,7 +16,6 @@ import { RootState } from '../store/store';
 import Mainpage from './Mainpage';
 
 export default function Home() {
-  let navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const isLogin = useSelector((state: RootState) => state.auth.isLogin);
@@ -63,7 +60,6 @@ export default function Home() {
           </div>
         </div>
       ) : (
-        // navigate('/mainpage')
         <Mainpage />
       )}
     </div>

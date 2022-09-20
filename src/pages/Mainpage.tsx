@@ -18,12 +18,14 @@ import CardModal from '../components/CardModal';
 import Converter from '../components/Converter';
 import DailyNews from '../components/DailyNews';
 import Footer from '../components/Footer/Footer';
+import { Head } from '../components/Head';
 
 export default function Mainpage() {
   const [collapsed, setCollapsed] = useState(true);
   const toggleNavbar = () => setCollapsed(!collapsed);
   return (
     <div>
+      <Head description="Welcome to currency-portfolio" />
       <div className="parallax d-none d-lg-flex">
         <div className="parallax-inner">
           <Link

@@ -14,3 +14,8 @@ export interface IPortfolio {
   acronym: string;
   name: string;
 }
+
+export type HeadProps = {
+  title?: string;
+  description?: string;
+};
