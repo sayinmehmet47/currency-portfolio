@@ -24,26 +24,28 @@ export default function DailyNews() {
     <div className="container">
       <h2 className="TrendingNow-heading">Trending Now</h2>
       <Row lg={4} md={3} className="d-flex justify-content-center">
-        {news
-          ? news.map((e, index) => {
-              return (
-                <Card className="m-2 shadow rounded" key={index}>
-                  <CardImg
-                    alt="Card image cap"
-                    src={e.promoImage.url}
-                    top
-                    width="100%"
-                  />
-                  <CardBody>
-                    <CardSubtitle className="mb-2 text-muted" tag="h6">
-                      {e.headline}
-                    </CardSubtitle>
-                    <CardText>{e.description}</CardText>
-                  </CardBody>
-                </Card>
-              );
-            })
-          : null}
+        {news ? (
+          news.map((e, index) => {
+            return (
+              <Card className="m-2 shadow rounded" key={index}>
+                <CardImg
+                  alt="Card image cap"
+                  src={e.promoImage.url}
+                  top
+                  width="100%"
+                />
+                <CardBody>
+                  <CardSubtitle className="mb-2 text-muted" tag="h6">
+                    {e.headline}
+                  </CardSubtitle>
+                  <CardText>{e.description}</CardText>
+                </CardBody>
+              </Card>
+            );
+          })
+        ) : (
+          <div>Loading...</div>
+        )}
       </Row>
     </div>
   );

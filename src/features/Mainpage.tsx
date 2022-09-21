@@ -32,8 +32,8 @@ export default function Mainpage() {
       <div className="parallax d-none d-lg-flex">
         <div className="parallax-inner">
           {auth ? (
-            <div className="position-absolute start-50 top-20 ">
-              <Link to="/dashboard" className="btn btn-primary px-5">
+            <div className="position-absolute start-45 top-20 me-3">
+              <Link to="/dashboard" className="btn btn-primary">
                 Dashboard
               </Link>
             </div>
@@ -64,7 +64,7 @@ export default function Mainpage() {
             </>
           )}
         </div>
-        <div className="parallax-inner-2 ">
+        <div className="parallax-inner-2  mt-5">
           <h1>Trade on MT-BANK</h1>
         </div>
         <img
