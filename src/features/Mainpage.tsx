@@ -19,37 +19,50 @@ import Converter from '../components/Converter';
 import DailyNews from '../components/DailyNews';
 import Footer from '../components/Footer/Footer';
 import { Head } from '../components/Head';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
 
 export default function Mainpage() {
   const [collapsed, setCollapsed] = useState(true);
+  const auth = useSelector((state: RootState) => state.auth.isLogin);
   const toggleNavbar = () => setCollapsed(!collapsed);
   return (
     <div>
       <Head description="Welcome to currency-portfolio" />
       <div className="parallax d-none d-lg-flex">
         <div className="parallax-inner">
-          <Link
-            to="/login"
-            className="btn btn-primary px-5"
-            style={{
-              position: 'absolute',
-              marginTop: '55px',
-              marginLeft: '36%',
-            }}
-          >
-            SIGN - IN
-          </Link>
-          <Link
-            to="/register"
-            className="btn btn-success px-5 "
-            style={{
-              position: 'absolute',
-              marginTop: '55px',
-              marginLeft: '50%',
-            }}
-          >
-            REGISTER
-          </Link>
+          {auth ? (
+            <div className="position-absolute start-50 top-20 ">
+              <Link to="/dashboard" className="btn btn-primary px-5">
+                Dashboard
+              </Link>
+            </div>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="btn btn-primary px-5"
+                style={{
+                  position: 'absolute',
+                  marginTop: '55px',
+                  marginLeft: '36%',
+                }}
+              >
+                SIGN - IN
+              </Link>
+              <Link
+                to="/register"
+                className="btn btn-success px-5 "
+                style={{
+                  position: 'absolute',
+                  marginTop: '55px',
+                  marginLeft: '50%',
+                }}
+              >
+                REGISTER
+              </Link>
+            </>
+          )}
         </div>
         <div className="parallax-inner-2 ">
           <h1>Trade on MT-BANK</h1>
@@ -76,22 +89,33 @@ export default function Mainpage() {
             <NavbarToggler onClick={toggleNavbar} className="me-2" />
             <Collapse navbar isOpen={!collapsed}>
               <Nav navbar>
-                <NavItem>
+                {auth ? (
                   <Link
-                    to="/login"
+                    to="/dashboard"
                     className="btn btn-primary mx-5 my-1 d-block"
                   >
-                    Login
+                    Dashboard
                   </Link>
-                </NavItem>
-                <NavItem>
-                  <Link
-                    to="/register"
-                    className="btn btn-success mx-5 my-1 d-block"
-                  >
-                    Register
-                  </Link>
-                </NavItem>
+                ) : (
+                  <>
+                    <NavItem>
+                      <Link
+                        to="/login"
+                        className="btn btn-primary mx-5 my-1 d-block"
+                      >
+                        Login
+                      </Link>
+                    </NavItem>
+                    <NavItem>
+                      <Link
+                        to="/register"
+                        className="btn btn-success mx-5 my-1 d-block"
+                      >
+                        Register
+                      </Link>
+                    </NavItem>
+                  </>
+                )}
               </Nav>
             </Collapse>
           </Navbar>

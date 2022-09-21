@@ -1,14 +1,15 @@
 import { Suspense } from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
 import { Spinner } from 'reactstrap';
+import { Navigate, Outlet } from 'react-router-dom';
 import Home from '../../features/Home';
+import Mainpage from '../../features/Mainpage';
 
 const App = () => {
   return (
     <Suspense
       fallback={
-        <div className="h-full w-full flex items-center justify-center">
-          <Spinner size="xl" />
+        <div className="">
+          <Spinner />
         </div>
       }
     >
@@ -23,7 +24,7 @@ export const protectedRoutes = [
     element: <App />,
     children: [
       { path: '/dashboard', element: <Home /> },
-      { path: '*', element: <Navigate to="." /> },
+      { path: '/', element: <Mainpage /> },
     ],
   },
 ];

@@ -43,9 +43,9 @@ input.search {
       from(rgba(0, 0, 0, 0.7)),
       to(rgba(0, 0, 0, 0.7))
     ),
-    url("./images/money.png") repeat fixed 100%;
+    url('./images/money.png') repeat fixed 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("./images/money.png") repeat fixed 100%;
+    url('./images/money.png') repeat fixed 100%;
   color: aliceblue;
   background-size: cover;
   background-repeat: no-repeat;
@@ -60,9 +60,9 @@ input.search {
   padding-bottom: 20%;
 }
 .parallax-inner-2 {
-  margin-left: 37%;
+  margin-left: auto;
   margin-right: auto;
-  margin-top: 20%;
+  margin-top: 10%;
 }
 .close {
   border: none;
@@ -93,7 +93,7 @@ input.search {
   width: 100%;
 }
 .TrendingNow-heading:before {
-  content: "";
+  content: '';
   height: 6px;
   width: 110px;
   background-color: #fcb700;
@@ -127,5 +127,13 @@ input.search {
   transition: opacity 200ms;
 }
 
-// Import Bootstrap and its default variables
-@import "~bootstrap/scss/bootstrap.scss";
+$position-values: (
+  0: 0,
+  20: 20%,
+  40: 40%,
+  50: 50%,
+  70: 70%,
+  100: 100%,
+);
+
+@import '~bootstrap/scss/bootstrap.scss';

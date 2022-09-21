@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import logo from '../images/newest.png';
 import { CgProfile } from 'react-icons/cg';
@@ -16,15 +16,22 @@ import { logout } from '../store/Actions/AuthActions';
 import { LanguageSelector } from './languageSelector';
 import { useTranslation } from 'react-i18next';
 import { RootState } from '../store/store';
+import { useNavigate } from 'react-router-dom';
 
 export const AppNavbar = () => {
   const [collapsed, setCollapsed] = useState(true);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const userName = useSelector((state: RootState) => state.auth.user.name);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
+
+  const handleLogout = (e: any) => {
+    dispatch(logout());
+    navigate('/');
+  };
 
   return (
     <div>
@@ -51,7 +58,7 @@ export const AppNavbar = () => {
               <NavLink
                 style={{ cursor: 'pointer' }}
                 className="d-flex align-items-center justify-content-center ms-4 rounded mt-1"
-                onClick={() => dispatch(logout())}
+                onClick={handleLogout}
               >
                 {t('logout')}
               </NavLink>{' '}
