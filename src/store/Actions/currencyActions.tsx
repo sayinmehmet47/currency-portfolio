@@ -96,7 +96,6 @@ export const sellCurrency =
       portfolio.filter((e) => e.acronym === fromCurrency)[0].totalAsset ===
       input
     ) {
-      console.log(portfolio);
       let newPortfolio = portfolio.filter((e) => e.acronym !== fromCurrency);
       newPortfolio = newPortfolio.map((e) => {
         if (e.acronym === toCurrency) {

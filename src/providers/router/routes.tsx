@@ -1,22 +1,14 @@
-import Home from '../../pages/Home';
-import Login from '../../pages/Login';
-import Mainpage from '../../pages/Mainpage';
-import NotFound from '../../pages/NotFound';
-import Register from '../../pages/Register';
-import Translation from '../../pages/Translation';
+import Home from '../../features/Home';
+import Login from '../../features/auth/components/Login';
+import Mainpage from '../../features/Mainpage';
+import NotFound from '../../features/NotFound';
+import Register from '../../features/Register';
+import Translation from '../../features/Translation';
 
 const routes = [
   {
     path: '/',
     component: <Home />,
-  },
-  {
-    path: '/login',
-    component: <Login />,
-  },
-  {
-    path: '/register',
-    component: <Register />,
   },
   {
     path: '/mainpage',

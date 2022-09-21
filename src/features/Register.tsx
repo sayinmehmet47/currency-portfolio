@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { TopBanner } from '../shared/styles/TopBanner.elements';
 
 import { register } from '../store/Actions/AuthActions';
-import { TopBanner } from './Login.elements';
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export default function Register() {
     setSurname(e.target.value);
   let navigate = useNavigate();
 
-  const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const user = {
@@ -29,7 +29,7 @@ export default function Register() {
       ],
     };
 
-    if (JSON.parse(localStorage.getItem(user.name) || '')) {
+    if (JSON.parse(localStorage.getItem(user.name) as string)) {
       setError('This account already exists');
       setTimeout(() => {
         setError('');

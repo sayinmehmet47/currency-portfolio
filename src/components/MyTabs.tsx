@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import DoughnutChart from './Doughnut';

@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Alert } from 'reactstrap';
-import { login } from '../store/Actions/AuthActions';
-import { TopBanner } from './Login.elements';
-import Logo from '../images/logo-black.png';
+import { login } from '../../../store/Actions/AuthActions';
+import Logo from '../../../images/logo-black.png';
 import { useNavigate } from 'react-router';
+import { TopBanner } from '../../../shared/styles/TopBanner.elements';
 
 const testAccount = {
   name: 'testAccount',
@@ -32,14 +32,14 @@ const Login = () => {
     setName(e.target.value);
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const user = JSON.parse(localStorage.getItem(name) || '');
+    const user = JSON.parse(localStorage.getItem(name) as string);
     if (user) {
       dispatch(login(user));
-      navigate('/');
+      navigate('/dashboard');
     } else if (name === 'testAccount') {
       localStorage.setItem('testAccount', JSON.stringify(testAccount));
       dispatch(login(testAccount));
-      navigate('/');
+      navigate('/dasboard');
     } else {
       setLogins(false);
       setAttempt(true);
