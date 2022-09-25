@@ -27,16 +27,16 @@ export default function Converter() {
   }, [selected, input]);
 
   return (
-    <div className="me-2 ms-1 ">
+    <div>
       <Card>
-        <CardBody className="d-flex justify-content-center">
+        <CardBody>
           <FormGroup>
             <CardTitle tag="p" className="bg-dark text-light p-2 rounded">
               EXCHANGE
             </CardTitle>
 
             <Input
-              className="form-select mb-2"
+              className=" mb-2"
               id="exampleSelect"
               name="select"
               type="number"

@@ -126,7 +126,7 @@ export default function Mainpage() {
       <h2 className="TrendingNow-heading mt-5">Currency Rates</h2>
 
       <CardModal />
-      <Row lg={2} md={1} sm={1}>
+      <Row lg={2} md={1} sm={1} className="container-fluid">
         <Col lg="9">
           {' '}
           <DailyNews />

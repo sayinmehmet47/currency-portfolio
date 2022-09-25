@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { Alert, Button, Form, FormGroup, Input, Label } from 'reactstrap';
-import { TopBanner } from '../shared/styles/TopBanner.elements';
+import { TopBanner } from '../../../shared/styles/TopBanner.elements';
 
-import { register } from '../store/Actions/AuthActions';
+import { register } from '../../../store/Actions/AuthActions';
 
 export default function Register() {
   const dispatch = useDispatch();

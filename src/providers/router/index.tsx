@@ -12,7 +12,7 @@ const RouterProvider = () => {
 
   const routes = auth.isLogin ? protectedRoutes : publicRoutes;
 
-  const element = useRoutes([...routes, ...commonRoutes]);
+  const element = useRoutes([...commonRoutes, ...routes]);
   return <>{element}</>;
 };
 

@@ -23,7 +23,7 @@ export default function DailyNews() {
   return (
     <div className="container">
       <h2 className="TrendingNow-heading">Trending Now</h2>
-      <Row lg={4} md={3} className="d-flex justify-content-center">
+      <Row lg={3} md={2} sm={1} className="d-flex justify-content-center">
         {news ? (
           news.map((e, index) => {
             return (

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { AppNavbar } from '../components/AppNavbar';
 import { PurchaseModal } from '../components/PurchaseModal';
-
 import {
   getPortfolio,
   getTotalAssets,
@@ -29,7 +29,6 @@ export default function Home() {
     if (isLogin) {
       dispatch(getPortfolio());
       dispatch(getCurrencies());
-      //can pass username
       dispatch(getTotalAssets());
     }
   }, [userName]);
