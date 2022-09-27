@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <HelmetProvider>
         <TransitionGroup>
-          <CSSTransition key={location.key} classNames="my-node" timeout={3000}>
+          <CSSTransition key={location.key} classNames="my-node" timeout={10}>
             <RouterProvider />
           </CSSTransition>
         </TransitionGroup>

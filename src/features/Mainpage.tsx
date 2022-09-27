@@ -123,7 +123,7 @@ export default function Mainpage() {
         <img src={Image} className="img-fluid " alt="bank-pic"></img>
         <h2 className="text-light bg-dark">Trade on MT-BANK</h2>
       </div>
-      <h2 className="TrendingNow-heading mt-5">Currency Rates</h2>
+      <div className="TrendingNow-heading mt-5 mx-5 ">Currency Rates</div>
 
       <CardModal />
       <Row lg={2} md={1} sm={1} className="container-fluid">

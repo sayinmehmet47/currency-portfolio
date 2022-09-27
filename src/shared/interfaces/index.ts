@@ -19,3 +19,10 @@ export type HeadProps = {
   title?: string;
   description?: string;
 };
+
+export type Theme = {
+  body: string;
+  text: string;
+  toggleBorder: string;
+  gradient: string;
+};
