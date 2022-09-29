@@ -1,5 +1,4 @@
-import { Suspense, lazy, Fragment } from 'react';
-import { Spinner } from 'react-rainbow-components';
+import { Suspense, lazy } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { MainLayout } from '../../components/Layout';
