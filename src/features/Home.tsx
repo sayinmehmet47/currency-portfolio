@@ -37,7 +37,6 @@ export default function Home() {
     <div className="home">
       {isLogin ? (
         <div>
-          <AppNavbar />
           {error ? <Alert color="warning">{error}</Alert> : ''}
 
           <div className="d-flex justify-content-center align-items-center">
