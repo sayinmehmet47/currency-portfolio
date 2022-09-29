@@ -1,8 +1,15 @@
-import { AuthRoutes } from '../../features/auth/routes';
+import { lazy, Suspense } from 'react';
+import Loading from '../../components/Spinner';
+
+const AuthRoutes = lazy(() => import('../../features/auth/routes'));
 
 export const publicRoutes = [
   {
     path: '*',
-    element: <AuthRoutes />,
+    element: (
+      <Suspense fallback={<Loading />}>
+        <AuthRoutes />{' '}
+      </Suspense>
+    ),
   },
 ];

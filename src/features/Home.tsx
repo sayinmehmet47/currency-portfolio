@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { AppNavbar } from '../components/AppNavbar';
 import { PurchaseModal } from '../components/PurchaseModal';
 import {
   getPortfolio,
@@ -13,7 +12,6 @@ import MyTabs from '../components/MyTabs';
 import SearchingComponent from '../components/SearchingComponent';
 import { useTranslation } from 'react-i18next';
 import { RootState } from '../store/store';
-import Mainpage from './Mainpage';
 
 export default function Home() {
   const { t } = useTranslation();
@@ -35,31 +33,25 @@ export default function Home() {
 
   return (
     <div className="home">
-      {isLogin ? (
-        <div>
-          {error ? <Alert color="warning">{error}</Alert> : ''}
+      <div>
+        {error ? <Alert color="warning">{error}</Alert> : ''}
 
-          <div className="d-flex justify-content-center align-items-center">
-            <h2>
-              {t('totalAssets')}:{totalAssets}$
-            </h2>
-          </div>
-
-          <div className="w-50 mx-auto mt-5">
-            <PurchaseModal selected={selectedCurrency} />
-            <SearchingComponent
-              selection={(q: any) => setSelectedCurrency(q)}
-            />
-          </div>
-          <MyTabs />
-          <div className="mt-5">
-            <span style={{ color: 'red' }}>{t('lastUpdated')}: </span>
-            <span className="pb-5">{lastUpdated}</span>
-          </div>
+        <div className="d-flex justify-content-center align-items-center">
+          <h2>
+            {t('totalAssets')}:{totalAssets}$
+          </h2>
         </div>
-      ) : (
-        <Mainpage />
-      )}
+
+        <div className="w-50 mx-auto mt-5">
+          <PurchaseModal selected={selectedCurrency} />
+          <SearchingComponent selection={(q: any) => setSelectedCurrency(q)} />
+        </div>
+        <MyTabs />
+        <div className="mt-5">
+          <span style={{ color: 'red' }}>{t('lastUpdated')}: </span>
+          <span className="pb-5">{lastUpdated}</span>
+        </div>
+      </div>
     </div>
   );
 }

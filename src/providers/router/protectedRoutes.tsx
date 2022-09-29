@@ -1,19 +1,16 @@
-import { Suspense } from 'react';
-import { Spinner } from 'reactstrap';
+import { Suspense, lazy, Fragment } from 'react';
+import { Spinner } from 'react-rainbow-components';
 import { Outlet } from 'react-router-dom';
-import Home from '../../features/Home';
+
 import { MainLayout } from '../../components/Layout';
+import Loading from '../../components/Spinner';
+
+const Home = lazy(() => import('../../features/Home'));
 
 const App = () => {
   return (
     <MainLayout>
-      <Suspense
-        fallback={
-          <div className="">
-            <Spinner />
-          </div>
-        }
-      >
+      <Suspense fallback={<Loading />}>
         <Outlet />
       </Suspense>
     </MainLayout>
