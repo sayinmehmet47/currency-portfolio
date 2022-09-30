@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
 import { MainLayout } from '../../components/Layout';
 import Loading from '../../components/Spinner';
@@ -21,5 +21,11 @@ export const protectedRoutes = [
     path: '/',
     element: <App />,
     children: [{ path: '/dashboard', element: <Home /> }],
+  },
+
+  // this annotation enable the routes to navigate to the home page
+  {
+    path: '*',
+    element: <Navigate to="." />,
   },
 ];
