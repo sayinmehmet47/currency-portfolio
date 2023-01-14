@@ -1,0 +1,35 @@
+name: First workflow
+on: workflow_dispatch
+jobs:
+ 
+      
+  test:
+   runs-on: ubuntu-latest
+   steps: 
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm run test
+  deploy:
+   runs-on: ubuntu-latest
+   steps: 
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Project
+        run: npm run build
+      - name: Deploy
+        run: echo "Deploying ..."
+
