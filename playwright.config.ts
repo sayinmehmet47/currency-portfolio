@@ -1,14 +1,14 @@
-// playwright.config.ts
-import { defineConfig } from '@playwright/test';
-export default defineConfig({
+import { PlaywrightTestConfig } from '@playwright/test';
+const config: PlaywrightTestConfig = {
+  // the rest of the options
   webServer: {
-    command: 'npm run start',
-    port: 3000,
+    command: 'yarn start',
+    url: 'http://localhost:3000/',
     timeout: 120000,
-    reuseExistingServer: !process.env.CI,
   },
   use: {
     baseURL: 'http://localhost:3000/',
-    trace: 'on-first-retry', // record traces on first retry of each test
   },
-});
+  // the rest of the options
+};
+export default config;
