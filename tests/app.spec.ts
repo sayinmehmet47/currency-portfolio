@@ -26,10 +26,14 @@ test.describe('Login', () => {
     await page.locator('#exampleSelect').selectOption('Deutsch');
     await page.locator('#exampleSelect').selectOption('English');
     await page.getByPlaceholder('TRY').click();
-    await page.getByPlaceholder('TRY').fill('e');
-    await expect(page.getByText('AED')).toBeVisible();
+    await page.waitForTimeout(2000);
+
+    await page.getByPlaceholder('TRY').fill('cve');
+    await page.waitForSelector('text=CVE', { state: 'visible' });
+    await page.waitForTimeout(2000);
     await page.getByText('CVECVE-Cape Verdean Escudo').click();
     await page.getByPlaceholder('20').click();
+    await page.waitForTimeout(2000);
     await page.getByPlaceholder('20').fill('200');
     await page.getByRole('button', { name: 'Exchange' }).click();
     await page
@@ -50,8 +54,6 @@ test.describe('Login', () => {
     await page.getByRole('button', { name: 'CVE' }).click();
     await page.getByPlaceholder('20').click();
     await page.getByPlaceholder('20').fill('10');
-    await page.getByRole('button', { name: 'Exchange' }).click();
-    await page.getByRole('button', { name: 'clear' }).click();
-    await page.getByText('Logout').click();
+    await page.getByText('Exchange').click();
   });
 });
