@@ -9,6 +9,8 @@ const config: PlaywrightTestConfig = {
   use: {
     baseURL: 'http://localhost:3000/',
   },
+  reporter: [['html', { open: 'never' }]],
+
   // the rest of the options
 };
 export default config;
