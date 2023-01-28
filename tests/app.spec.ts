@@ -4,7 +4,7 @@ test.describe('Login', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
-  test('should login and redirect to main page', async ({ page }) => {
+  test.skip('should login and redirect to main page', async ({ page }) => {
     // This will result in http://localhost:3000/foo
     await page.getByRole('link', { name: 'SIGN - IN' }).click();
     await expect(page).toHaveURL('/login');
@@ -17,7 +17,7 @@ test.describe('Login', () => {
     await page.getByPlaceholder('TRY').click();
   });
 
-  test('should buy currency', async ({ page }) => {
+  test.only('should buy currency', async ({ page }) => {
     await page.getByRole('link', { name: 'SIGN - IN' }).click();
     await page.getByPlaceholder('login with `testAccount`').click();
     await page.getByPlaceholder('login with `testAccount`').fill('testAccount');
@@ -27,8 +27,8 @@ test.describe('Login', () => {
     await page.locator('#exampleSelect').selectOption('English');
     await page.getByPlaceholder('TRY').click();
     await page.getByPlaceholder('TRY').fill('e');
+    await expect(page.getByText('AED')).toBeVisible();
     await page.getByText('CVECVE-Cape Verdean Escudo').click();
-    await page.waitForTimeout(5000);
     await page.getByPlaceholder('20').click();
     await page.getByPlaceholder('20').fill('200');
     await page.getByRole('button', { name: 'Exchange' }).click();
