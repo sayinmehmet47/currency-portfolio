@@ -11,6 +11,7 @@
  - [x] Styled Components
  - [x] React-Router-Dom
  - [x] Local Storage
+ - [X] Playwright test
  
 
  
