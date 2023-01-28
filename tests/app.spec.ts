@@ -28,6 +28,7 @@ test.describe('Login', () => {
     await page.getByPlaceholder('TRY').click();
     await page.getByPlaceholder('TRY').fill('e');
     await page.getByText('CVECVE-Cape Verdean Escudo').click();
+    await page.waitForTimeout(5000);
     await page.getByPlaceholder('20').click();
     await page.getByPlaceholder('20').fill('200');
     await page.getByRole('button', { name: 'Exchange' }).click();
