@@ -30,10 +30,8 @@ test.describe('Login', () => {
 
     await page.getByPlaceholder('TRY').fill('cve');
     await page.waitForSelector('text=CVE', { state: 'visible' });
-    await page.waitForTimeout(2000);
     await page.getByText('CVECVE-Cape Verdean Escudo').click();
     await page.getByPlaceholder('20').click();
-    await page.waitForTimeout(2000);
     await page.getByPlaceholder('20').fill('200');
     await page.getByRole('button', { name: 'Exchange' }).click();
     await page
